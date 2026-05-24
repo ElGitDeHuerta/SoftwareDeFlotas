@@ -1,0 +1,57 @@
+﻿using Capa_de_Servicios_SL_;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Ingenieria.De.Software
+{
+    public partial class Form2 : Form
+    {
+        public Form PadreLogin { get; set; }
+        public Form2()
+        {
+            InitializeComponent();
+        }
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            var usuarioActivo = SessionManager.TraerInstancia().usuarioINS;
+            this.Text = $"Sistema de flotillas - Bienvenido: {usuarioActivo.NombreUsuario}";
+            LBLnombre.Text = usuarioActivo.NombreUsuario;
+        }
+
+        private void BTNcerrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SessionManager.TraerInstancia().Logout();
+                MessageBox.Show("Sesión cerrada correctamente.");
+
+                if (PadreLogin != null)
+                {
+                    PadreLogin.Show();
+                }
+                this.Close();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+        //eventos del formulario
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (SessionManager.TraerInstancia().usuarioINS != null)
+            {
+                SessionManager.TraerInstancia().Logout();
+            }
+
+            if (this.PadreLogin != null)
+            {
+                this.PadreLogin.Show();
+            }
+        }
+    }
+}
