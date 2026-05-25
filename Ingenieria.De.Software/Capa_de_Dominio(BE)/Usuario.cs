@@ -16,5 +16,7 @@ namespace Capa_de_Dominio_BE_
         public string NombreUsuario { get; set; }
         public string Contraseña { get; set; }
 
+        public bool Activo { get; set; }
+
     }
 }

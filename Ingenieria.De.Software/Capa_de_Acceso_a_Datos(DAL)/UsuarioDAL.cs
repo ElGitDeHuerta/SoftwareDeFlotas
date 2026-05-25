@@ -34,17 +34,19 @@ namespace Capa_de_Acceso_a_Datos_DAL_
 
             parametros.Add(new SqlParameter("@nombre", usa.NombreUsuario));
             parametros.Add(new SqlParameter("@contra", usa.Contraseña));
+            parametros.Add(new SqlParameter("@activo", usa.Activo));
+
 
             if (usa.Id == 0)
             {
                 usa.Id = SiguienteId();
                 parametros.Add(new SqlParameter("@id", usa.Id));
-                comando = "INSERT INTO Usuario (Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña) VALUES (@id, @nombre, @contra)";
+                comando = "INSERT INTO Usuario (Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo) VALUES (@id, @nombre, @contra, @activo)";
             }
             else
             {
                 parametros.Add(new SqlParameter("@id", usa.Id));
-                comando = "UPDATE Usuario SET Usuario_NombreUsuario = @nombre, Usuario_Contraseña = @contra WHERE Usuario_Id = @id";
+                comando = "UPDATE Usuario SET Usuario_NombreUsuario = @nombre, Usuario_Contraseña = @contra, Usuario_Activo = @activo WHERE Usuario_Id = @id";
             }
 
             return dao.EjecutarNonQuery(comando, parametros);
@@ -59,7 +61,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
 
         public static Usuario ObtenerPorId(int pid)
         {
-            string comando = "SELECT Usuario_NombreUsuario, Usuario_Contraseña FROM Usuario WHERE Usuario_Id = @id";
+            string comando = "SELECT Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo FROM Usuario WHERE Usuario_Id = @id";
             List<SqlParameter> parametros = new List<SqlParameter> { new SqlParameter("@id", pid) };
             DAO dao = new DAO();
             DataSet seta = dao.ObtenerDataSet(comando, parametros);
@@ -73,7 +75,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
         }
         public static List<Usuario> Listar()
         {
-            string comando = "SELECT Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña FROM Usuario";
+            string comando = "SELECT Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo FROM Usuario";
             DAO dao = new DAO();
             DataSet seta = dao.ObtenerDataSet(comando);
             if (seta.Tables.Count > 0 && seta.Tables[0].Rows.Count > 0)
@@ -94,11 +96,12 @@ namespace Capa_de_Acceso_a_Datos_DAL_
         {
             usa.NombreUsuario = fila["Usuario_NombreUsuario"].ToString();
             usa.Contraseña = fila["Usuario_Contraseña"].ToString();
+            usa.Activo = Convert.ToBoolean(fila["Usuario_Activo"]);
         }
 
         public static Usuario ObtenerPorNombre(string username)
         {
-            string comando = "SELECT Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña FROM Usuario WHERE Usuario_NombreUsuario = @user";
+            string comando = "SELECT Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo FROM Usuario WHERE Usuario_NombreUsuario = @user";
             List<SqlParameter> parametros = new List<SqlParameter> { new SqlParameter("@user", username) };
             DAO dao = new DAO();
             DataSet seta = dao.ObtenerDataSet(comando, parametros);

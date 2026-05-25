@@ -24,13 +24,13 @@ namespace Ingenieria.De.Software
             this.Text = $"Sistema de flotillas - Bienvenido: {usuarioActivo.NombreUsuario}";
             LBLnombre.Text = usuarioActivo.NombreUsuario;
         }
-
+        //botones
+        #region botones
         private void BTNcerrar_Click(object sender, EventArgs e)
         {
             try
             {
                 SessionManager.TraerInstancia().Logout();
-                MessageBox.Show("Sesión cerrada correctamente.");
 
                 if (PadreLogin != null)
                 {
@@ -40,7 +40,10 @@ namespace Ingenieria.De.Software
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-        //eventos del formulario
+        #endregion botones
+
+        //eventos de formulario
+        #region formularios
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (SessionManager.TraerInstancia().usuarioINS != null)
@@ -53,5 +56,17 @@ namespace Ingenieria.De.Software
                 this.PadreLogin.Show();
             }
         }
+        private void BTNgestUsuarios_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormGestionUsuarios Fgestusu = new FormGestionUsuarios();
+                Fgestusu.PadredelPadreLogin = this;
+                Fgestusu.Show();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+        #endregion formularios
+
     }
 }

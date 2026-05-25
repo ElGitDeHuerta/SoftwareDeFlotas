@@ -14,18 +14,21 @@ namespace Capa_de_Aplicación_BLL_
         private CryptoManager crypton = new CryptoManager();
         public int Guardar(Usuario usa)
         {
+            usa.NombreUsuario.Trim();
+            usa.Contraseña.Trim();
             ValidarCredenciales(usa.NombreUsuario, usa.Contraseña);
+            usa.Contraseña = crypton.Hash(usa.Contraseña);
             return UsuarioDAL.Guardar(usa);
         }
         public int Eliminar(Usuario usa)
         {
             return UsuarioDAL.Eliminar(usa);
         }
-        public Usuario ObtenerPorId(int pid)
+        public static Usuario ObtenerPorId(int pid)
         {
             return UsuarioDAL.ObtenerPorId(pid);
         }
-        public List<Usuario> Listar()
+        public static List<Usuario> Listar()
         {
             return UsuarioDAL.Listar();
         }
@@ -36,7 +39,7 @@ namespace Capa_de_Aplicación_BLL_
             ValidarCredenciales(username, password);
             Usuario usuario = UsuarioDAL.ObtenerPorNombre(username);
 
-            if (usuario == null)
+            if (usuario == null || !usuario.Activo) // si no se encuentra usuario o esta inactivo
                 return false;
 
             if (crypton.Compare(password, usuario.Contraseña))
@@ -62,6 +65,5 @@ namespace Capa_de_Aplicación_BLL_
             if (password.Length > 100)
                 throw new Exception("Contraseña demasiado larga");
         }
-
     }
 }

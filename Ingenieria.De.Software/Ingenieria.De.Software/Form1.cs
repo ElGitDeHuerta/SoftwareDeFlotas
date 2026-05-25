@@ -29,7 +29,9 @@ namespace Ingenieria.De.Software
         #region eventos principales de los controles
         private void BTNingresar_Click(object sender, EventArgs e)
         {
-            //para hacer pruebas Juan66, 123456
+            //para hacer pruebas Juan66, 123456 ; Maria01, miPerro ; Carlos22, contrasenia ; Ana77, reina2001 ; PedroX, elmascapo67
+
+
             UsuarioBLL usabll = new UsuarioBLL();
             try
             {
@@ -37,17 +39,17 @@ namespace Ingenieria.De.Software
                 {
                     Usuario usaLog = SessionManager.TraerInstancia().usuarioINS;
                     string fech = SessionManager.TraerInstancia().FechaDeInicio.ToString();
-                    MessageBox.Show($"Ingreso Válido.\n\n Usuario: {usaLog.NombreUsuario}\n , en la fecha: {fech}, Hash en DB: {usaLog.Contraseña}");
+                    MessageBox.Show($"Ingreso Válido.\n\n bienvenido {usaLog.NombreUsuario}\n ");
                     SaltarAPantallaPrincipal(usabll);
                 }
                 else
                 {
                     intentos--;
                     LBLtimer.Text = $"le quedan {intentos} intentos";
-                    if( intentos > 0)
+                    if (intentos > 0)
                         throw new Exception("Nombre de usuario o contraseña incorrectas");
-                    else 
-                        BloqueTemporaldelBoton(10); 
+                    else
+                        BloqueTemporaldelBoton(10);
                 }
             }
             catch (Exception ex) { Mostrarexepcion(ex); }

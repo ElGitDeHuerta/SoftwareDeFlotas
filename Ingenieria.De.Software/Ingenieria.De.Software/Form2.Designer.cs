@@ -32,6 +32,7 @@
             this.LBLnombre = new System.Windows.Forms.Label();
             this.BTNcerrar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BTNgestUsuarios = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             this.label1.Location = new System.Drawing.Point(7, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 44);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 2;
             this.label1.Text = "Usuario:";
             // 
             // LBLnombre
@@ -67,7 +68,7 @@
             this.BTNcerrar.Location = new System.Drawing.Point(19, 346);
             this.BTNcerrar.Name = "BTNcerrar";
             this.BTNcerrar.Size = new System.Drawing.Size(113, 46);
-            this.BTNcerrar.TabIndex = 4;
+            this.BTNcerrar.TabIndex = 1;
             this.BTNcerrar.Text = "Cerrar sesion";
             this.BTNcerrar.UseVisualStyleBackColor = false;
             this.BTNcerrar.Click += new System.EventHandler(this.BTNcerrar_Click);
@@ -75,13 +76,29 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.BTNgestUsuarios);
             this.panel1.Controls.Add(this.BTNcerrar);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(163, 404);
-            this.panel1.TabIndex = 5;
+            this.panel1.TabIndex = 0;
+            // 
+            // BTNgestUsuarios
+            // 
+            this.BTNgestUsuarios.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTNgestUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNgestUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNgestUsuarios.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNgestUsuarios.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTNgestUsuarios.Location = new System.Drawing.Point(19, 283);
+            this.BTNgestUsuarios.Name = "BTNgestUsuarios";
+            this.BTNgestUsuarios.Size = new System.Drawing.Size(113, 46);
+            this.BTNgestUsuarios.TabIndex = 0;
+            this.BTNgestUsuarios.Text = "Gestionar Usuarios";
+            this.BTNgestUsuarios.UseVisualStyleBackColor = false;
+            this.BTNgestUsuarios.Click += new System.EventHandler(this.BTNgestUsuarios_Click);
             // 
             // Form2
             // 
@@ -107,5 +124,6 @@
         private System.Windows.Forms.Label LBLnombre;
         private System.Windows.Forms.Button BTNcerrar;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button BTNgestUsuarios;
     }
 }

@@ -1,34 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\",
+  "WorkspaceRootPath": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|c:\\users\\ezequ\\onedrive\\escritorio\\repositorioflotasgithub\\ingenieria.de.software\\ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|solutionrelative:ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E48DFD3-B9C2-49E0-B09F-8455BE14CCE3}|Capa_de_Servicios(SL)\\Capa_de_Servicios(SL).csproj|C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\capa_de_servicios(sl)\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E48DFD3-B9C2-49E0-B09F-8455BE14CCE3}|Capa_de_Servicios(SL)\\Capa_de_Servicios(SL).csproj|solutionrelative:capa_de_servicios(sl)\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE101F63-1C88-4BBB-A68C-F0DAA073E934}|Capa_de_Dominio(BE)\\Capa_de_Dominio(BE).csproj|c:\\users\\ezequ\\onedrive\\escritorio\\universidad\\patrones c#\\ingenieria.de.software\\capa_de_dominio(be)\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE101F63-1C88-4BBB-A68C-F0DAA073E934}|Capa_de_Dominio(BE)\\Capa_de_Dominio(BE).csproj|solutionrelative:capa_de_dominio(be)\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E48DFD3-B9C2-49E0-B09F-8455BE14CCE3}|Capa_de_Servicios(SL)\\Capa_de_Servicios(SL).csproj|C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\capa_de_servicios(sl)\\cryptomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E48DFD3-B9C2-49E0-B09F-8455BE14CCE3}|Capa_de_Servicios(SL)\\Capa_de_Servicios(SL).csproj|solutionrelative:capa_de_servicios(sl)\\cryptomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\ingenieria.de.software\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|solutionrelative:ingenieria.de.software\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|c:\\users\\ezequ\\onedrive\\escritorio\\repositorioflotasgithub\\ingenieria.de.software\\ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|solutionrelative:ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\ingenieria.de.software\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|solutionrelative:ingenieria.de.software\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,89 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SessionManager.cs",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Capa_de_Servicios(SL)\\SessionManager.cs",
-              "RelativeDocumentMoniker": "Capa_de_Servicios(SL)\\SessionManager.cs",
-              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Capa_de_Servicios(SL)\\SessionManager.cs",
-              "RelativeToolTip": "Capa_de_Servicios(SL)\\SessionManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T01:42:13.01Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CryptoManager.cs",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Capa_de_Servicios(SL)\\CryptoManager.cs",
-              "RelativeDocumentMoniker": "Capa_de_Servicios(SL)\\CryptoManager.cs",
-              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Capa_de_Servicios(SL)\\CryptoManager.cs",
-              "RelativeToolTip": "Capa_de_Servicios(SL)\\CryptoManager.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T03:36:09.876Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Capa_de_Dominio(BE)\\Usuario.cs",
-              "RelativeDocumentMoniker": "Capa_de_Dominio(BE)\\Usuario.cs",
-              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Capa_de_Dominio(BE)\\Usuario.cs",
-              "RelativeToolTip": "Capa_de_Dominio(BE)\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T01:41:14.947Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
               "RelativeDocumentMoniker": "Ingenieria.De.Software\\Form1.cs",
-              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
+              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
               "RelativeToolTip": "Ingenieria.De.Software\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T04:42:28.708Z",
+              "WhenOpened": "2026-05-25T19:43:21.151Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
               "RelativeDocumentMoniker": "Ingenieria.De.Software\\Form1.cs",
-              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Ingenieria.De.Software\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T03:29:47.527Z",
+              "WhenOpened": "2026-05-25T19:34:01.386Z",
               "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Form2.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form2.cs",
-              "RelativeDocumentMoniker": "Ingenieria.De.Software\\Form2.cs",
-              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form2.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ingenieria.De.Software\\Form2.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T20:51:52.651Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form2.cs",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form2.cs",
-              "RelativeDocumentMoniker": "Ingenieria.De.Software\\Form2.cs",
-              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\Universidad\\patrones c#\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form2.cs",
-              "RelativeToolTip": "Ingenieria.De.Software\\Form2.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T18:35:58.851Z"
             }
           ]
         }
