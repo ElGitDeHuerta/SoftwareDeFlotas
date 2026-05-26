@@ -32,7 +32,7 @@ namespace Capa_de_Aplicación_BLL_
         {
             return UsuarioDAL.Listar();
         }
-        public bool Login(string usa, string pas)
+        public string Login(string usa, string pas)
         {
             string username = usa.Trim();
             string password = pas.Trim();
@@ -40,14 +40,14 @@ namespace Capa_de_Aplicación_BLL_
             Usuario usuario = UsuarioDAL.ObtenerPorNombre(username);
 
             if (usuario == null || !usuario.Activo) // si no se encuentra usuario o esta inactivo
-                return false;
+                return "El usuario no tiene una cuenta activa";
 
             if (crypton.Compare(password, usuario.Contraseña))
             {
                 SessionManager.TraerInstancia().Login(usuario);
-                return true;
+                return "Exito";
             }
-            return false;
+            return "Contraseña invalida";
         }
         //metodos de soporte
         public void ValidarCredenciales(string usuario, string password)

@@ -10,12 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Ingenieria.De.Software.Constantes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Ingenieria.De.Software
 {
     public partial class Form1 : Form
     {
-        int intentos = 3;
+        private int intentos = 3;
+        private bool bloqueo = false;
         public Form1()
         {
             InitializeComponent();
@@ -30,30 +33,38 @@ namespace Ingenieria.De.Software
         private void BTNingresar_Click(object sender, EventArgs e)
         {
             //para hacer pruebas Juan66, 123456 ; Maria01, miPerro ; Carlos22, contrasenia ; Ana77, reina2001 ; PedroX, elmascapo67
-
-
-            UsuarioBLL usabll = new UsuarioBLL();
-            try
+            if (!bloqueo)
             {
-                if (usabll.Login(TXTusua.Text, TXTcontra.Text))
+                UsuarioBLL usabll = new UsuarioBLL();
+                try
                 {
-                    Usuario usaLog = SessionManager.TraerInstancia().usuarioINS;
-                    string fech = SessionManager.TraerInstancia().FechaDeInicio.ToString();
-                    MessageBox.Show($"Ingreso Válido.\n\n bienvenido {usaLog.NombreUsuario}\n ");
-                    SaltarAPantallaPrincipal(usabll);
+                    string devolucion = usabll.Login(TXTusua.Text, TXTcontra.Text);
+                    switch (devolucion)
+                    {
+                        case "Exito":
+                            Usuario usaLog = SessionManager.TraerInstancia().usuarioINS;
+                            string fech = SessionManager.TraerInstancia().FechaDeInicio.ToString();
+                            MessageBox.Show($"Ingreso Válido.\n\n bienvenido {usaLog.NombreUsuario}\n ");
+                            SaltarAPantallaPrincipal(usabll);
+                            break;
+                        case "Contraseña invalida":
+                            RestarIntento();
+                            Mostrarexepcion(devolucion);
+                            break;
+                        case "El usuario no tiene una cuenta activa":
+                            Mostrarexepcion(devolucion);
+                            break;
+                        default:
+                            Mostrarexepcion("Error desconocido");
+                            break;
+                    }
                 }
-                else
-                {
-                    intentos--;
-                    LBLtimer.Text = $"le quedan {intentos} intentos";
-                    if (intentos > 0)
-                        throw new Exception("Nombre de usuario o contraseña incorrectas");
-                    else
-                        BloqueTemporaldelBoton(10);
-                }
+                catch (Exception ex) { Mostrarexepcion(ex.Message); }
             }
-            catch (Exception ex) { Mostrarexepcion(ex); }
+            else { Mostrarexepcion("Espera a que termine el contador"); }
         }
+
+
         private void BTNcancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -69,23 +80,20 @@ namespace Ingenieria.De.Software
 
         //metodos de soporte
         #region metodos de soporte
-        private void SaltarAPantallaPrincipal(UsuarioBLL musabll)
+        private void RestarIntento()
         {
-            try
-            {
-                Form2 Fprinciapl = new Form2();
-                Fprinciapl.PadreLogin = this;
-                this.Hide();
-                Fprinciapl.Show();
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            intentos--;
+            LBLtimer.Text = $"le quedan {intentos} intentos";
+            if (intentos <= 0)
+                BloqueTemporaldelBoton();
         }
-        private void BloqueTemporaldelBoton(int segundos)
+        private void BloqueTemporaldelBoton(int segundos = 30)
         {
             desabilitarboton();
 
             Timer timer = new Timer();
             timer.Interval = 1000;
+            bloqueo = true;
 
             timer.Tick += (s, e) =>
             {
@@ -97,6 +105,7 @@ namespace Ingenieria.De.Software
                     timer.Stop();
                     reactivarbotones();
                     intentos = 3;
+                    bloqueo = false;
                     LBLtimer.Text = "le quedan 3 intentos";
                 }
             };
@@ -108,12 +117,12 @@ namespace Ingenieria.De.Software
             BTNingresar.ForeColor = SystemColors.ActiveBorder;
             BTNingresar.BackColor = SystemColors.WindowFrame;
         }
-        private void Mostrarexepcion(Exception ex)
+        private void Mostrarexepcion(string exmen)
         {
-            if(ex.Message.Length < 200)
-                LBLerrores.Text = ex.Message;
+            if(exmen.Length < 200)
+                LBLerrores.Text = exmen;
             else
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(exmen);
             desabilitarboton();
         }
         private void reactivarbotones()
@@ -128,6 +137,19 @@ namespace Ingenieria.De.Software
             }
         }
         #endregion metodos de soporte
+
+        // metodos de formulario
+        private void SaltarAPantallaPrincipal(UsuarioBLL musabll)
+        {
+            try
+            {
+                Form2 Fprinciapl = new Form2();
+                Fprinciapl.PadreLogin = this;
+                this.Hide();
+                Fprinciapl.Show();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
 
         // eventos de controles
         #region eventos para controles
