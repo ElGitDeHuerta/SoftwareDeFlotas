@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Capa_de_Aplicación_BLL_;
+using Capa_de_Servicios_SL_;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +16,8 @@ namespace Ingenieria.De.Software
         [STAThread]
         static void Main()
         {
+            SessionManager.TraerInstancia().Suscribir(new BitacoraObserver());
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

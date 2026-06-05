@@ -14,6 +14,9 @@ namespace Capa_de_Servicios_SL_
         private static SessionManager instancia;
         public Usuario usuarioINS { get; private set; }
         public DateTime FechaDeInicio { get; private set; }
+
+        private List<ISessionObserver> _observadores = new List<ISessionObserver>();
+
         private SessionManager() { }
         public static SessionManager TraerInstancia()
         {
@@ -25,6 +28,24 @@ namespace Capa_de_Servicios_SL_
             }
         }
 
+        #region Observer
+        public void Suscribir(ISessionObserver observador)
+        {
+            _observadores.Add(observador);
+        }
+
+        private void Notificar(string actividad)
+        {
+            foreach (var obs in _observadores)
+                obs.Actualizar(usuarioINS.NombreUsuario, actividad);
+        }
+
+        public void RegistrarActividad(string actividad)
+        {
+            Notificar(actividad);
+        }
+        #endregion Observer
+
         #region LogIn/LogOut
         public void Login(Usuario usa)
         {
@@ -34,16 +55,18 @@ namespace Capa_de_Servicios_SL_
                 {
                     this.usuarioINS = usa;
                     this.FechaDeInicio = DateTime.Now;
+                    Notificar("Login");
                 }
                 else { throw new Exception("Ya hay un usuario con sesión activa"); }
             }
         }
-        public void Logout() 
+        public void Logout()
         {
             lock (Lock)
             {
                 if (this.usuarioINS != null)
                 {
+                    Notificar("Logout");
                     this.usuarioINS = null;
                     this.FechaDeInicio = default(DateTime);
                 }

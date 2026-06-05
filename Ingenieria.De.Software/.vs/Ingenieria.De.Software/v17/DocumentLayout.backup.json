@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\",
+  "WorkspaceRootPath": "C:\\Users\\Nico\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\2026\\ING DE SOFT\\Practicas de examen\\Patrones\\SoftwareDeFlotas\\Ingenieria.De.Software\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|c:\\users\\ezequ\\onedrive\\escritorio\\repositorioflotasgithub\\ingenieria.de.software\\ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|c:\\users\\nico\\onedrive - universidad abierta interamericana\\2026\\ing de soft\\practicas de examen\\patrones\\softwaredeflotas\\ingenieria.de.software\\ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|solutionrelative:ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1B8B5122-C102-42BA-B8C3-ED457F07A10F}|Capa_de_Aplicaci\u00F3n(BLL)\\Capa_de_Aplicaci\u00F3n(BLL).csproj|c:\\users\\ezequ\\onedrive\\escritorio\\repositorioflotasgithub\\ingenieria.de.software\\capa_de_aplicaci\u00F3n(bll)\\usuariobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1B8B5122-C102-42BA-B8C3-ED457F07A10F}|Capa_de_Aplicaci\u00F3n(BLL)\\Capa_de_Aplicaci\u00F3n(BLL).csproj|C:\\Users\\Nico\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\2026\\ING DE SOFT\\Practicas de examen\\Patrones\\SoftwareDeFlotas\\Ingenieria.De.Software\\capa_de_aplicaci\u00F3n(bll)\\usuariobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1B8B5122-C102-42BA-B8C3-ED457F07A10F}|Capa_de_Aplicaci\u00F3n(BLL)\\Capa_de_Aplicaci\u00F3n(BLL).csproj|solutionrelative:capa_de_aplicaci\u00F3n(bll)\\usuariobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|C:\\Users\\Nico\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\2026\\ING DE SOFT\\Practicas de examen\\Patrones\\SoftwareDeFlotas\\Ingenieria.De.Software\\ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{9987A0D2-C36B-4565-94F6-CC9B9078CD7D}|Ingenieria.De.Software\\Ingenieria.De.Software.csproj|solutionrelative:ingenieria.de.software\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -22,38 +22,29 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "UsuarioBLL.cs",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Capa_de_Aplicaci\u00F3n(BLL)\\UsuarioBLL.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\2026\\ING DE SOFT\\Practicas de examen\\Patrones\\SoftwareDeFlotas\\Ingenieria.De.Software\\Capa_de_Aplicaci\u00F3n(BLL)\\UsuarioBLL.cs",
               "RelativeDocumentMoniker": "Capa_de_Aplicaci\u00F3n(BLL)\\UsuarioBLL.cs",
-              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Capa_de_Aplicaci\u00F3n(BLL)\\UsuarioBLL.cs",
+              "ToolTip": "C:\\Users\\Nico\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\2026\\ING DE SOFT\\Practicas de examen\\Patrones\\SoftwareDeFlotas\\Ingenieria.De.Software\\Capa_de_Aplicaci\u00F3n(BLL)\\UsuarioBLL.cs",
               "RelativeToolTip": "Capa_de_Aplicaci\u00F3n(BLL)\\UsuarioBLL.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAwwCsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-25T22:18:12.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-25T22:18:12.951Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\2026\\ING DE SOFT\\Practicas de examen\\Patrones\\SoftwareDeFlotas\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
               "RelativeDocumentMoniker": "Ingenieria.De.Software\\Form1.cs",
-              "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
+              "ToolTip": "C:\\Users\\Nico\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\2026\\ING DE SOFT\\Practicas de examen\\Patrones\\SoftwareDeFlotas\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
               "RelativeToolTip": "Ingenieria.De.Software\\Form1.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAYwGkAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-25T19:43:21.151Z",
               "EditorCaption": ""
@@ -62,10 +53,10 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\2026\\ING DE SOFT\\Practicas de examen\\Patrones\\SoftwareDeFlotas\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs",
               "RelativeDocumentMoniker": "Ingenieria.De.Software\\Form1.cs",
               "ToolTip": "C:\\Users\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ingenieria.De.Software\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\ezequ\\OneDrive\\Escritorio\\RepositorioFlotasGitHub\\Ingenieria.De.Software\\Ingenieria.De.Software\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-25T19:34:01.386Z"
             }

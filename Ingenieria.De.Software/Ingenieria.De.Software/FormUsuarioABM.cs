@@ -106,14 +106,16 @@ namespace Ingenieria.De.Software
                 {
                     case Constantes.TiposOperacion.Alta:
                         if (UsuarioEditable == null)
-                            UsuarioEditable = new Usuario(0); //0 indica que debe ser creado 
+                            UsuarioEditable = new Usuario(0); //0 indica que debe ser creado
                         ValorizarEntidad(UsuarioEditable);
                         persistidor.Guardar(UsuarioEditable);
+                        SessionManager.TraerInstancia().RegistrarActividad("Alta de usuario: " + UsuarioEditable.NombreUsuario);
                         this.Close();
                         break;
                     case Constantes.TiposOperacion.Modificacion:
                         ValorizarEntidad(UsuarioEditable);
                         persistidor.Guardar(UsuarioEditable);
+                        SessionManager.TraerInstancia().RegistrarActividad("Modificacion de usuario: " + UsuarioEditable.NombreUsuario);
                         this.Close();
                         break;
                     case Constantes.TiposOperacion.Baja:
@@ -121,6 +123,7 @@ namespace Ingenieria.De.Software
                         if (sm.usuarioINS.Id != UsuarioEditable.Id)
                         {
                             persistidor.Eliminar(UsuarioEditable);
+                            sm.RegistrarActividad("Baja de usuario: " + UsuarioEditable.NombreUsuario);
                             this.Close();
                         }
                         else
