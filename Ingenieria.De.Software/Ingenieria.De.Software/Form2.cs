@@ -68,5 +68,14 @@ namespace Ingenieria.De.Software
         }
         #endregion formularios
 
+        private void BTNbitacora_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormBitacora fBitacora = new FormBitacora();
+                fBitacora.ShowDialog(this);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
     }
 }

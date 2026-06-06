@@ -33,6 +33,7 @@
             this.BTNcerrar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BTNgestUsuarios = new System.Windows.Forms.Button();
+            this.BTNbitacora = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +77,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.BTNbitacora);
             this.panel1.Controls.Add(this.BTNgestUsuarios);
             this.panel1.Controls.Add(this.BTNcerrar);
             this.panel1.Controls.Add(this.label1);
@@ -99,6 +101,21 @@
             this.BTNgestUsuarios.Text = "Gestionar Usuarios";
             this.BTNgestUsuarios.UseVisualStyleBackColor = false;
             this.BTNgestUsuarios.Click += new System.EventHandler(this.BTNgestUsuarios_Click);
+            // 
+            // BTNbitacora
+            // 
+            this.BTNbitacora.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTNbitacora.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNbitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNbitacora.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNbitacora.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTNbitacora.Location = new System.Drawing.Point(19, 96);
+            this.BTNbitacora.Name = "BTNbitacora";
+            this.BTNbitacora.Size = new System.Drawing.Size(113, 46);
+            this.BTNbitacora.TabIndex = 3;
+            this.BTNbitacora.Text = "Bitácora";
+            this.BTNbitacora.UseVisualStyleBackColor = false;
+            this.BTNbitacora.Click += new System.EventHandler(this.BTNbitacora_Click);
             // 
             // Form2
             // 
@@ -125,5 +142,6 @@
         private System.Windows.Forms.Button BTNcerrar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BTNgestUsuarios;
+        private System.Windows.Forms.Button BTNbitacora;
     }
 }
