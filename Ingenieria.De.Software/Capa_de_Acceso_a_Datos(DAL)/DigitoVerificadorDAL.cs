@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace Capa_de_Acceso_a_Datos_DAL_
 {
     public class DigitoVerificadorDAL
-    {
+    {  //controla la tabla del digito verificador vertical en BD
         public static string ObtenerDVVPorTabla(string nombreTabla)
-        {
+        {   
             string comando = "SELECT DVV_Hash FROM DigitoVerificadorVertical WHERE DVV_Tabla = @tabla";
             List<SqlParameter> parametros = new List<SqlParameter> { new SqlParameter("@tabla", nombreTabla) };
             DAO dao = new DAO();
@@ -33,7 +33,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
                 new SqlParameter("@hash", hashVertical)
             };
 
-            // Intentamos actualizar, si no existe el registro (rows affected == 0), lo insertamos.
+            // Intentamos actualizar, si no existe el registro lo insertamos
             string comandoUpdate = "UPDATE DigitoVerificadorVertical SET DVV_Hash = @hash WHERE DVV_Tabla = @tabla";
             int filasAfectadas = dao.EjecutarNonQuery(comandoUpdate, parametros);
 
