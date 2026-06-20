@@ -38,6 +38,9 @@
             this.BTNcancelar = new System.Windows.Forms.Button();
             this.CHKcontra = new System.Windows.Forms.CheckBox();
             this.CHKmostrar = new System.Windows.Forms.CheckBox();
+            this.CMBpermisos = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CHKbloqueoDV = new System.Windows.Forms.CheckBox();
             this.PNLtitulo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +60,7 @@
             this.TXTnomusu.BackColor = System.Drawing.SystemColors.Control;
             this.TXTnomusu.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TXTnomusu.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.TXTnomusu.Location = new System.Drawing.Point(236, 76);
+            this.TXTnomusu.Location = new System.Drawing.Point(236, 83);
             this.TXTnomusu.Name = "TXTnomusu";
             this.TXTnomusu.Size = new System.Drawing.Size(391, 29);
             this.TXTnomusu.TabIndex = 1;
@@ -69,7 +72,7 @@
             this.TXTnomcon.Enabled = false;
             this.TXTnomcon.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TXTnomcon.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.TXTnomcon.Location = new System.Drawing.Point(236, 143);
+            this.TXTnomcon.Location = new System.Drawing.Point(235, 133);
             this.TXTnomcon.Name = "TXTnomcon";
             this.TXTnomcon.Size = new System.Drawing.Size(391, 29);
             this.TXTnomcon.TabIndex = 2;
@@ -85,7 +88,7 @@
             this.CHKactivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CHKactivo.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CHKactivo.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.CHKactivo.Location = new System.Drawing.Point(27, 209);
+            this.CHKactivo.Location = new System.Drawing.Point(22, 258);
             this.CHKactivo.Name = "CHKactivo";
             this.CHKactivo.Size = new System.Drawing.Size(103, 31);
             this.CHKactivo.TabIndex = 3;
@@ -97,7 +100,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label2.Location = new System.Drawing.Point(22, 78);
+            this.label2.Location = new System.Drawing.Point(17, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 27);
             this.label2.TabIndex = 4;
@@ -119,7 +122,7 @@
             this.BTNconfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTNconfirmar.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNconfirmar.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.BTNconfirmar.Location = new System.Drawing.Point(284, 214);
+            this.BTNconfirmar.Location = new System.Drawing.Point(284, 248);
             this.BTNconfirmar.Name = "BTNconfirmar";
             this.BTNconfirmar.Size = new System.Drawing.Size(155, 52);
             this.BTNconfirmar.TabIndex = 7;
@@ -133,7 +136,7 @@
             this.BTNcancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTNcancelar.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNcancelar.ForeColor = System.Drawing.Color.IndianRed;
-            this.BTNcancelar.Location = new System.Drawing.Point(472, 214);
+            this.BTNcancelar.Location = new System.Drawing.Point(472, 248);
             this.BTNcancelar.Name = "BTNcancelar";
             this.BTNcancelar.Size = new System.Drawing.Size(155, 52);
             this.BTNcancelar.TabIndex = 8;
@@ -147,7 +150,7 @@
             this.CHKcontra.BackColor = System.Drawing.SystemColors.Control;
             this.CHKcontra.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CHKcontra.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.CHKcontra.Location = new System.Drawing.Point(27, 143);
+            this.CHKcontra.Location = new System.Drawing.Point(22, 133);
             this.CHKcontra.Name = "CHKcontra";
             this.CHKcontra.Size = new System.Drawing.Size(156, 31);
             this.CHKcontra.TabIndex = 9;
@@ -162,7 +165,7 @@
             this.CHKmostrar.Enabled = false;
             this.CHKmostrar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CHKmostrar.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.CHKmostrar.Location = new System.Drawing.Point(471, 177);
+            this.CHKmostrar.Location = new System.Drawing.Point(471, 168);
             this.CHKmostrar.Name = "CHKmostrar";
             this.CHKmostrar.Size = new System.Drawing.Size(146, 21);
             this.CHKmostrar.TabIndex = 10;
@@ -171,11 +174,50 @@
             this.CHKmostrar.Visible = false;
             this.CHKmostrar.CheckedChanged += new System.EventHandler(this.CHKmostrar_CheckedChanged);
             // 
+            // CMBpermisos
+            // 
+            this.CMBpermisos.BackColor = System.Drawing.SystemColors.Control;
+            this.CMBpermisos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CMBpermisos.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CMBpermisos.FormattingEnabled = true;
+            this.CMBpermisos.Location = new System.Drawing.Point(236, 195);
+            this.CMBpermisos.Name = "CMBpermisos";
+            this.CMBpermisos.Size = new System.Drawing.Size(391, 28);
+            this.CMBpermisos.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label1.Location = new System.Drawing.Point(17, 193);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 27);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Nivel de Permisos:";
+            // 
+            // CHKbloqueoDV
+            // 
+            this.CHKbloqueoDV.AutoSize = true;
+            this.CHKbloqueoDV.BackColor = System.Drawing.SystemColors.Control;
+            this.CHKbloqueoDV.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CHKbloqueoDV.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHKbloqueoDV.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.CHKbloqueoDV.Location = new System.Drawing.Point(131, 258);
+            this.CHKbloqueoDV.Name = "CHKbloqueoDV";
+            this.CHKbloqueoDV.Size = new System.Drawing.Size(123, 31);
+            this.CHKbloqueoDV.TabIndex = 13;
+            this.CHKbloqueoDV.Text = "Bloqueo :";
+            this.CHKbloqueoDV.UseVisualStyleBackColor = false;
+            // 
             // FormUsuarioABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 278);
+            this.ClientSize = new System.Drawing.Size(639, 315);
+            this.Controls.Add(this.CHKbloqueoDV);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.CMBpermisos);
             this.Controls.Add(this.CHKmostrar);
             this.Controls.Add(this.CHKcontra);
             this.Controls.Add(this.BTNcancelar);
@@ -207,5 +249,8 @@
         private System.Windows.Forms.Button BTNcancelar;
         private System.Windows.Forms.CheckBox CHKcontra;
         private System.Windows.Forms.CheckBox CHKmostrar;
+        private System.Windows.Forms.ComboBox CMBpermisos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox CHKbloqueoDV;
     }
 }

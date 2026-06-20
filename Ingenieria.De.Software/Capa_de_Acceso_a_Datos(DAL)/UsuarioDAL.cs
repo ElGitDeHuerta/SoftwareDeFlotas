@@ -34,19 +34,22 @@ namespace Capa_de_Acceso_a_Datos_DAL_
 
             parametros.Add(new SqlParameter("@nombre", usa.NombreUsuario));
             parametros.Add(new SqlParameter("@contra", usa.Contraseña));
-            parametros.Add(new SqlParameter("@activo", usa.Activo));
+            parametros.Add(new SqlParameter("@activo", usa.Activo)); 
+            parametros.Add(new SqlParameter("@permiso", usa.NivelPermisos)); 
+            parametros.Add(new SqlParameter("@bloqueoDV", usa.BloqueoDV));
+            parametros.Add(new SqlParameter("@dvh", usa.DVH ?? (object)DBNull.Value)); // para que acepte null
 
 
             if (usa.Id == 0)
             {
                 usa.Id = SiguienteId();
                 parametros.Add(new SqlParameter("@id", usa.Id));
-                comando = "INSERT INTO Usuario (Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo) VALUES (@id, @nombre, @contra, @activo)";
+                comando = "INSERT INTO Usuario (Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo, Usuario_Permiso, Usuario_BloqueoDV, Usuario_DVH) VALUES (@id, @nombre, @contra, @activo, @permiso, @bloqueoDV, @dvh)";
             }
             else
             {
                 parametros.Add(new SqlParameter("@id", usa.Id));
-                comando = "UPDATE Usuario SET Usuario_NombreUsuario = @nombre, Usuario_Contraseña = @contra, Usuario_Activo = @activo WHERE Usuario_Id = @id";
+                comando = "UPDATE Usuario SET Usuario_NombreUsuario = @nombre, Usuario_Contraseña = @contra, Usuario_Activo = @activo, Usuario_Permiso = @permiso, Usuario_BloqueoDV = @bloqueoDV, Usuario_DVH = @dvh WHERE Usuario_Id = @id";
             }
 
             return dao.EjecutarNonQuery(comando, parametros);
@@ -61,7 +64,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
 
         public static Usuario ObtenerPorId(int pid)
         {
-            string comando = "SELECT Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo FROM Usuario WHERE Usuario_Id = @id";
+            string comando = "SELECT Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo, Usuario_Permiso, Usuario_BloqueoDV, Usuario_DVH FROM Usuario WHERE Usuario_Id = @id";
             List<SqlParameter> parametros = new List<SqlParameter> { new SqlParameter("@id", pid) };
             DAO dao = new DAO();
             DataSet seta = dao.ObtenerDataSet(comando, parametros);
@@ -75,7 +78,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
         }
         public static List<Usuario> Listar()
         {
-            string comando = "SELECT Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo FROM Usuario";
+            string comando = "SELECT Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo, Usuario_Permiso, Usuario_BloqueoDV, Usuario_DVH FROM Usuario ORDER BY Usuario_Id";
             DAO dao = new DAO();
             DataSet seta = dao.ObtenerDataSet(comando);
             if (seta.Tables.Count > 0 && seta.Tables[0].Rows.Count > 0)
@@ -97,11 +100,14 @@ namespace Capa_de_Acceso_a_Datos_DAL_
             usa.NombreUsuario = fila["Usuario_NombreUsuario"].ToString();
             usa.Contraseña = fila["Usuario_Contraseña"].ToString();
             usa.Activo = Convert.ToBoolean(fila["Usuario_Activo"]);
+            usa.NivelPermisos = Convert.ToInt32(fila["Usuario_Permiso"]);
+            usa.BloqueoDV = Convert.ToBoolean(fila["Usuario_BloqueoDV"]);
+            usa.DVH = fila["Usuario_DVH"].ToString();
         }
 
         public static Usuario ObtenerPorNombre(string username)
         {
-            string comando = "SELECT Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo FROM Usuario WHERE Usuario_NombreUsuario = @user";
+            string comando = "SELECT Usuario_Id, Usuario_NombreUsuario, Usuario_Contraseña, Usuario_Activo, Usuario_Permiso, Usuario_BloqueoDV, Usuario_DVH FROM Usuario WHERE Usuario_NombreUsuario = @user";
             List<SqlParameter> parametros = new List<SqlParameter> { new SqlParameter("@user", username) };
             DAO dao = new DAO();
             DataSet seta = dao.ObtenerDataSet(comando, parametros);
@@ -114,6 +120,12 @@ namespace Capa_de_Acceso_a_Datos_DAL_
                 return usa;
             }
             return null;
+        }
+        public static int BloquearUsuariosPorFalla()
+        {
+            string comando = "UPDATE Usuario SET Usuario_BloqueoDV = 1 WHERE Usuario_Permiso <> 1";
+            DAO dao = new DAO();
+            return dao.EjecutarNonQuery(comando, new List<SqlParameter>());
         }
     }
 }

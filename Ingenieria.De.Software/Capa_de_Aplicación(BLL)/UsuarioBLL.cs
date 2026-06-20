@@ -12,17 +12,27 @@ namespace Capa_de_Aplicación_BLL_
     public class UsuarioBLL
     {
         private CryptoManager crypton = new CryptoManager();
+        private ValidadorDeIntegridad validador = new ValidadorDeIntegridad();
+        private DigitoVerificadorBLL DVbll = new DigitoVerificadorBLL();
         public int Guardar(Usuario usa)
         {
-            usa.NombreUsuario.Trim();
-            usa.Contraseña.Trim();
-            ValidarCredenciales(usa.NombreUsuario, usa.Contraseña);
-            usa.Contraseña = crypton.Hash(usa.Contraseña);
-            return UsuarioDAL.Guardar(usa);
+            usa.NombreUsuario = usa.NombreUsuario.Trim();
+            usa.Contraseña = usa.Contraseña.Trim();
+            if (usa.Id == 0)
+            {
+                ValidarCredenciales(usa.NombreUsuario, usa.Contraseña);
+                usa.Contraseña = crypton.Hash(usa.Contraseña);
+            }
+            usa.DVH = validador.CalcularDVH(usa); //calcular el nuevo dvh
+            int resultado = UsuarioDAL.Guardar(usa);
+            DVbll.RecalcularUsuariosDVV(); 
+            return resultado;
         }
         public int Eliminar(Usuario usa)
         {
-            return UsuarioDAL.Eliminar(usa);
+            int resultado = UsuarioDAL.Eliminar(usa);
+            DVbll.RecalcularUsuariosDVV(); // niguna dvh se da cuenta pero si la dvv
+            return resultado;
         }
         public static Usuario ObtenerPorId(int pid)
         {
@@ -41,6 +51,9 @@ namespace Capa_de_Aplicación_BLL_
 
             if (usuario == null || !usuario.Activo) // si no se encuentra usuario o esta inactivo
                 return "El usuario no tiene una cuenta activa";
+
+            if (usuario.BloqueoDV && usuario.NivelPermisos != 1) // si no se encuentra usuario o esta inactivo
+                return "El usuario esta bloqueado";
 
             if (crypton.Compare(password, usuario.Contraseña))
             {

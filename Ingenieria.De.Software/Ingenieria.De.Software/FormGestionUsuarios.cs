@@ -35,16 +35,25 @@ namespace Ingenieria.De.Software
             DGVusuaios.Columns["Id"].Visible = false;
 
             DGVusuaios.Columns.Add("Nombre", "Nombre");
-            DGVusuaios.Columns["Nombre"].Width = 200;
+            DGVusuaios.Columns["Nombre"].Width = 150;
 
             DGVusuaios.Columns.Add("Contraseña", "Contraseña");
-            DGVusuaios.Columns["Contraseña"].Width = 200;
+            DGVusuaios.Columns["Contraseña"].Width = 150;
 
             DataGridViewCheckBoxColumn columnaActivo = new DataGridViewCheckBoxColumn();
             columnaActivo.Name = "Activo";
             columnaActivo.HeaderText = "Activo";
             DGVusuaios.Columns.Add(columnaActivo);
-            DGVusuaios.Columns["Activo"].Width = 200;
+            DGVusuaios.Columns["Activo"].Width = 100;
+
+            DGVusuaios.Columns.Add("NivelPermisos", "NivelPermisos");
+            DGVusuaios.Columns["NivelPermisos"].Width = 100;
+
+            DataGridViewCheckBoxColumn columnaBloqueado = new DataGridViewCheckBoxColumn();
+            columnaBloqueado.Name = "BloqueoDV";
+            columnaBloqueado.HeaderText = "BloqueoDV";
+            DGVusuaios.Columns.Add(columnaBloqueado);
+            DGVusuaios.Columns["BloqueoDV"].Width = 100;
 
             DGVusuaios.AllowUserToAddRows = false;
             DGVusuaios.AllowUserToDeleteRows = false;
@@ -62,7 +71,7 @@ namespace Ingenieria.De.Software
 
             foreach (var usu in usuarios)
             {
-                DGVusuaios.Rows.Add(usu.Id, usu.NombreUsuario, usu.Contraseña, usu.Activo.ToString());
+                DGVusuaios.Rows.Add(usu.Id, usu.NombreUsuario, usu.Contraseña, usu.Activo.ToString(), usu.NivelPermisos.ToString(), usu.BloqueoDV.ToString());
             }
         }
         private void DGVusuaios_SelectionChanged(object sender, EventArgs e)
@@ -72,6 +81,7 @@ namespace Ingenieria.De.Software
                 TXTnom.Text = DGVusuaios.CurrentRow.Cells["Nombre"].Value.ToString();
                 TXTcon.Text = DGVusuaios.CurrentRow.Cells["Contraseña"].Value.ToString();
                 CHKactivo.Checked = Convert.ToBoolean(DGVusuaios.CurrentRow.Cells["Activo"].Value);
+                CHKbloqueado.Checked = Convert.ToBoolean(DGVusuaios.CurrentRow.Cells["BloqueoDV"].Value);
             }
         }
         #endregion grilla
@@ -131,5 +141,51 @@ namespace Ingenieria.De.Software
         }
         #endregion botones
 
+        private void BTNdesbloqueoDV_Click(object sender, EventArgs e)
+        {
+            // Cartel de confirmacion de accion
+            DialogResult resultado = MessageBox.Show(
+                "¿Está seguro de que desea normalizar el sistema?\n\nEsto removerá el flag de BloqueoDV de todos los usuarios y volverá a generar las firmas de integridad (DVH y DVV) basadas en los datos actuales",
+                "Confirmar Restablecimiento del Sistema",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                try
+                {
+                    DigitoVerificadorBLL dvBll = new DigitoVerificadorBLL();
+                    UsuarioBLL usuarioBll = new UsuarioBLL();
+
+                    List<Usuario> listaUsuarios = UsuarioBLL.Listar();
+                    if (listaUsuarios != null)
+                    {
+                        foreach (Usuario usu in listaUsuarios)
+                        {
+                            usu.BloqueoDV = false; //desbloqueo
+                            usuarioBll.Guardar(usu); //guardar actualiza las dvs 
+                        }
+
+                        MessageBox.Show(
+                            "El sistema se ha normalizado con exito, Se desbloquearon todos los accesos y las firmas digitales de la base de datos se encuentran actualizadas",
+                            "Operación Exitosa",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                        Actualizar();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"Ocurrio un error inesperado al intentar normalizar las firmas: {ex.Message}",
+                        "Error de Operación",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
     }
 }

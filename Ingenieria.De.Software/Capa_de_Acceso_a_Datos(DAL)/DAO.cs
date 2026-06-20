@@ -17,7 +17,6 @@ namespace Capa_de_Acceso_a_Datos_DAL_
             var connectionSetting = ConfigurationManager.ConnectionStrings["MiConexionBiblioteca"];
             cadenaConexion = connectionSetting.ConnectionString;
         }
-        //private string cadenaConexion = "Server = DESKTOP-EV1GE2E\\MSSQLSERVERPRIME; Database = DB_ingenieria_de_software; Integrated Security = True;";
 
         public DataSet ObtenerDataSet(string comando, List<SqlParameter> parametros = null)
         {
@@ -32,6 +31,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
                     SqlDataAdapter adaptador = new SqlDataAdapter(coma);
                     DataSet seta = new DataSet();
                     adaptador.Fill(seta);
+                    coma.Parameters.Clear();
                     return seta;
                 }
             }
@@ -47,7 +47,9 @@ namespace Capa_de_Acceso_a_Datos_DAL_
                     if (parametros != null) coma.Parameters.AddRange(parametros.ToArray());
 
                     mCon.Open();
-                    return coma.ExecuteNonQuery();
+                    int filasAfectadas = coma.ExecuteNonQuery();
+                    coma.Parameters.Clear();
+                    return filasAfectadas;
                 }
             }
             catch (Exception ex) { throw (ex); }

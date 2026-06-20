@@ -32,12 +32,13 @@ namespace Ingenieria.De.Software
         #region eventos principales de los controles
         private void BTNingresar_Click(object sender, EventArgs e)
         {
-            //para hacer pruebas Juan66, 123456 ; Maria01, miPerro ; Carlos22, contrasenia ; Ana77, reina2001 ; PedroX, elmascapo67
+            //para hacer pruebas Juan66, 123456 (admin); Maria01, miPerro ; Carlos22, contrasenia ; Ana77, reina2001 ; PedroX, elmascapo67 (admin)
             if (!bloqueo)
             {
                 UsuarioBLL usabll = new UsuarioBLL();
                 try
                 {
+                    ValidarItegridadDeLosDatos();
                     string devolucion = usabll.Login(TXTusua.Text, TXTcontra.Text);
                     switch (devolucion)
                     {
@@ -54,10 +55,14 @@ namespace Ingenieria.De.Software
                         case "El usuario no tiene una cuenta activa":
                             Mostrarexepcion(devolucion);
                             break;
+                        case "El usuario esta bloqueado":
+                            Mostrarexepcion(devolucion);
+                            break;
                         default:
                             Mostrarexepcion("Error desconocido");
                             break;
                     }
+                    
                 }
                 catch (Exception ex) { Mostrarexepcion(ex.Message); }
             }
@@ -134,6 +139,24 @@ namespace Ingenieria.De.Software
                 BTNingresar.Enabled = true;
                 BTNingresar.ForeColor = SystemColors.WindowFrame;
                 BTNingresar.BackColor = SystemColors.ActiveBorder;
+            }
+        }
+        private void ValidarItegridadDeLosDatos()
+        {
+            DigitoVerificadorBLL integridadBll = new DigitoVerificadorBLL();
+            string TodoIntegro = integridadBll.ValidarIntegridadDelSistema();
+
+            if (TodoIntegro != "ok")
+            {
+                int cantidad = integridadBll.BloquearUsuariosPorFallaIntegridad();
+
+                MessageBox.Show(
+                    "La integridad de la base de datos fue comprometida. "+ cantidad + " han sido bloqueados. Por favor, llame a un administrador",
+                    "ERROR CRÍTICO DE SEGURIDAD",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Stop
+                );
+                Mostrarexepcion(TodoIntegro);
             }
         }
         #endregion metodos de soporte

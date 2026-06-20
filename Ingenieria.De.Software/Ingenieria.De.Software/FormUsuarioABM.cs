@@ -24,8 +24,9 @@ namespace Ingenieria.De.Software
 
         private void FormUsuarioABM_Load(object sender, EventArgs e)
         {
+            CMBpermisos.Items.Add("Administrador");
+            CMBpermisos.Items.Add("Usuario Generico");
             CargarABM();
-            
         }
         // inicializar formulario
         #region cargar
@@ -76,6 +77,8 @@ namespace Ingenieria.De.Software
             TXTnomusu.Enabled = false;
             CHKactivo.Enabled = false;
             CHKcontra.Enabled = false;
+            CMBpermisos.Enabled = false;
+            CHKbloqueoDV.Enabled = false;
 
         }
 
@@ -84,6 +87,15 @@ namespace Ingenieria.De.Software
             TXTnomusu.Text = usua.NombreUsuario;
             TXTnomcon.Text = "";
             CHKactivo.Checked = usua.Activo;
+
+            // Mapeamos el estado del flag individual a la pantalla
+            CHKbloqueoDV.Checked = usua.BloqueoDV;
+
+            switch (usua.NivelPermisos)
+            {
+                case 1: CMBpermisos.SelectedItem = "Administrador"; break;
+                case 2: CMBpermisos.SelectedItem = "Usuario Generico"; break;
+            }
         }
         #endregion cargar
 
@@ -92,13 +104,27 @@ namespace Ingenieria.De.Software
         private void ValorizarEntidad(Usuario usua)
         {
             usua.NombreUsuario = TXTnomusu.Text;
-            if(CHKcontra.Checked == true)
+            if (CHKcontra.Checked == true)
                 usua.Contraseña = TXTnomcon.Text;
+
+            switch (CMBpermisos.SelectedIndex)
+            {
+                case 0: usua.NivelPermisos = 1; break;
+                case 1: usua.NivelPermisos = 2; break;
+                default: usua.NivelPermisos = 0; break;
+            }
+
             usua.Activo = CHKactivo.Checked;
+            usua.BloqueoDV = CHKbloqueoDV.Checked;
         }
 
         private void BTNconfirmar_Click(object sender, EventArgs e)
         {
+            if (CMBpermisos.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un nivel de permisos válido para el usuario");
+                return;
+            }
             try
             {
                 UsuarioBLL persistidor = new UsuarioBLL();
@@ -152,7 +178,6 @@ namespace Ingenieria.De.Software
                 e.Handled = true;
             }
         }
-
         private void TXTnomcon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))

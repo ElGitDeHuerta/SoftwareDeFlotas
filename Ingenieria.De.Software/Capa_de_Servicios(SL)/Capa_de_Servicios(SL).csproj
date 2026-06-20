@@ -45,6 +45,7 @@
     <Compile Include="ISessionObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionManager.cs" />
+    <Compile Include="ValidadorDeIntegridad.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Capa_de_Dominio%28BE%29\Capa_de_Dominio%28BE%29.csproj">

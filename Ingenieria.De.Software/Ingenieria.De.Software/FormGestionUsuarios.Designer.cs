@@ -38,6 +38,8 @@
             this.TXTcon = new System.Windows.Forms.TextBox();
             this.CHKactivo = new System.Windows.Forms.CheckBox();
             this.BTNvolver = new System.Windows.Forms.Button();
+            this.BTNdesbloqueoDV = new System.Windows.Forms.Button();
+            this.CHKbloqueado = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVusuaios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,7 +152,7 @@
             this.CHKactivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CHKactivo.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CHKactivo.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.CHKactivo.Location = new System.Drawing.Point(16, 174);
+            this.CHKactivo.Location = new System.Drawing.Point(16, 165);
             this.CHKactivo.Name = "CHKactivo";
             this.CHKactivo.Size = new System.Drawing.Size(80, 24);
             this.CHKactivo.TabIndex = 11;
@@ -172,11 +174,44 @@
             this.BTNvolver.UseVisualStyleBackColor = false;
             this.BTNvolver.Click += new System.EventHandler(this.BTNvolver_Click);
             // 
+            // BTNdesbloqueoDV
+            // 
+            this.BTNdesbloqueoDV.BackColor = System.Drawing.Color.IndianRed;
+            this.BTNdesbloqueoDV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNdesbloqueoDV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNdesbloqueoDV.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNdesbloqueoDV.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BTNdesbloqueoDV.Location = new System.Drawing.Point(139, 165);
+            this.BTNdesbloqueoDV.Name = "BTNdesbloqueoDV";
+            this.BTNdesbloqueoDV.Size = new System.Drawing.Size(121, 56);
+            this.BTNdesbloqueoDV.TabIndex = 13;
+            this.BTNdesbloqueoDV.Text = "Desbloqueo Masivo de DV";
+            this.BTNdesbloqueoDV.UseVisualStyleBackColor = false;
+            this.BTNdesbloqueoDV.Click += new System.EventHandler(this.BTNdesbloqueoDV_Click);
+            // 
+            // CHKbloqueado
+            // 
+            this.CHKbloqueado.AutoSize = true;
+            this.CHKbloqueado.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CHKbloqueado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CHKbloqueado.Enabled = false;
+            this.CHKbloqueado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CHKbloqueado.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHKbloqueado.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.CHKbloqueado.Location = new System.Drawing.Point(16, 195);
+            this.CHKbloqueado.Name = "CHKbloqueado";
+            this.CHKbloqueado.Size = new System.Drawing.Size(115, 24);
+            this.CHKbloqueado.TabIndex = 14;
+            this.CHKbloqueado.Text = "Bloqueado :";
+            this.CHKbloqueado.UseVisualStyleBackColor = true;
+            // 
             // FormGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 357);
+            this.Controls.Add(this.CHKbloqueado);
+            this.Controls.Add(this.BTNdesbloqueoDV);
             this.Controls.Add(this.BTNvolver);
             this.Controls.Add(this.CHKactivo);
             this.Controls.Add(this.TXTcon);
@@ -209,5 +244,7 @@
         private System.Windows.Forms.TextBox TXTcon;
         private System.Windows.Forms.CheckBox CHKactivo;
         private System.Windows.Forms.Button BTNvolver;
+        private System.Windows.Forms.Button BTNdesbloqueoDV;
+        private System.Windows.Forms.CheckBox CHKbloqueado;
     }
 }
