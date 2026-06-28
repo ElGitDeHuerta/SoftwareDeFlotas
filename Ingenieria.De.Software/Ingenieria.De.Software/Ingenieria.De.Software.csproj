@@ -59,6 +59,12 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAsignacionPermisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAsignacionPermisos.Designer.cs">
+      <DependentUpon>FormAsignacionPermisos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBitacora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,12 @@
     </Compile>
     <Compile Include="FormGestionUsuarios.Designer.cs">
       <DependentUpon>FormGestionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPermisosRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPermisosRoles.Designer.cs">
+      <DependentUpon>FormPermisosRoles.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUsuarioABM.cs">
       <SubType>Form</SubType>
@@ -86,11 +98,17 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAsignacionPermisos.resx">
+      <DependentUpon>FormAsignacionPermisos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormBitacora.resx">
       <DependentUpon>FormBitacora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGestionUsuarios.resx">
       <DependentUpon>FormGestionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPermisosRoles.resx">
+      <DependentUpon>FormPermisosRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUsuarioABM.resx">
       <DependentUpon>FormUsuarioABM.cs</DependentUpon>

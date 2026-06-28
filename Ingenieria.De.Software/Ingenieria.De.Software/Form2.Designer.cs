@@ -32,8 +32,9 @@
             this.LBLnombre = new System.Windows.Forms.Label();
             this.BTNcerrar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BTNgestUsuarios = new System.Windows.Forms.Button();
             this.BTNbitacora = new System.Windows.Forms.Button();
+            this.BTNgestUsuarios = new System.Windows.Forms.Button();
+            this.BTNgestRolesPerm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +78,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.BTNgestRolesPerm);
             this.panel1.Controls.Add(this.BTNbitacora);
             this.panel1.Controls.Add(this.BTNgestUsuarios);
             this.panel1.Controls.Add(this.BTNcerrar);
@@ -86,6 +88,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(163, 404);
             this.panel1.TabIndex = 0;
+            // 
+            // BTNbitacora
+            // 
+            this.BTNbitacora.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTNbitacora.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNbitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNbitacora.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNbitacora.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTNbitacora.Location = new System.Drawing.Point(19, 96);
+            this.BTNbitacora.Name = "BTNbitacora";
+            this.BTNbitacora.Size = new System.Drawing.Size(113, 46);
+            this.BTNbitacora.TabIndex = 3;
+            this.BTNbitacora.Text = "Bitácora";
+            this.BTNbitacora.UseVisualStyleBackColor = false;
+            this.BTNbitacora.Click += new System.EventHandler(this.BTNbitacora_Click);
             // 
             // BTNgestUsuarios
             // 
@@ -102,20 +119,20 @@
             this.BTNgestUsuarios.UseVisualStyleBackColor = false;
             this.BTNgestUsuarios.Click += new System.EventHandler(this.BTNgestUsuarios_Click);
             // 
-            // BTNbitacora
+            // BTNgestRolesPerm
             // 
-            this.BTNbitacora.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BTNbitacora.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTNbitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTNbitacora.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNbitacora.ForeColor = System.Drawing.SystemColors.Control;
-            this.BTNbitacora.Location = new System.Drawing.Point(19, 96);
-            this.BTNbitacora.Name = "BTNbitacora";
-            this.BTNbitacora.Size = new System.Drawing.Size(113, 46);
-            this.BTNbitacora.TabIndex = 3;
-            this.BTNbitacora.Text = "Bitácora";
-            this.BTNbitacora.UseVisualStyleBackColor = false;
-            this.BTNbitacora.Click += new System.EventHandler(this.BTNbitacora_Click);
+            this.BTNgestRolesPerm.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTNgestRolesPerm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNgestRolesPerm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNgestRolesPerm.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNgestRolesPerm.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTNgestRolesPerm.Location = new System.Drawing.Point(19, 231);
+            this.BTNgestRolesPerm.Name = "BTNgestRolesPerm";
+            this.BTNgestRolesPerm.Size = new System.Drawing.Size(113, 46);
+            this.BTNgestRolesPerm.TabIndex = 4;
+            this.BTNgestRolesPerm.Text = "Gestionar Roles y Permisos";
+            this.BTNgestRolesPerm.UseVisualStyleBackColor = false;
+            this.BTNgestRolesPerm.Click += new System.EventHandler(this.BTNgestRolesPerm_Click);
             // 
             // Form2
             // 
@@ -143,5 +160,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BTNgestUsuarios;
         private System.Windows.Forms.Button BTNbitacora;
+        private System.Windows.Forms.Button BTNgestRolesPerm;
     }
 }

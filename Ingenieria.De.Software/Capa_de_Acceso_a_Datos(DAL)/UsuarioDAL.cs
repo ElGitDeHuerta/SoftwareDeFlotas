@@ -51,9 +51,12 @@ namespace Capa_de_Acceso_a_Datos_DAL_
                 parametros.Add(new SqlParameter("@id", usa.Id));
                 comando = "UPDATE Usuario SET Usuario_NombreUsuario = @nombre, Usuario_Contraseña = @contra, Usuario_Activo = @activo, Usuario_Permiso = @permiso, Usuario_BloqueoDV = @bloqueoDV, Usuario_DVH = @dvh WHERE Usuario_Id = @id";
             }
-
-            return dao.EjecutarNonQuery(comando, parametros);
-        }  // todavia no usado
+            int cantidadFilas = dao.EjecutarNonQuery(comando, parametros);
+            if (cantidadFilas > 0)
+                GuardarPermisosUsuario(usa);
+            
+            return cantidadFilas;
+        } 
         public static int Eliminar(Usuario usa)  
         {
             string comando = "DELETE Usuario WHERE Usuario_Id = @id";
@@ -72,6 +75,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
             {
                 Usuario usa = new Usuario(pid);
                 valorizarentidad(usa, seta.Tables[0].Rows[0]);
+                CargarPermisosDelUsuario(usa);
                 return usa;
             }
             else { return null; }
@@ -88,6 +92,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
                 {
                     Usuario usa = new Usuario(int.Parse(fila["Usuario_Id"].ToString()));
                     valorizarentidad(usa, fila);
+                    CargarPermisosDelUsuario(usa);
                     listalumno.Add(usa);
                 }
                 return listalumno;
@@ -117,15 +122,83 @@ namespace Capa_de_Acceso_a_Datos_DAL_
                 DataRow fila = seta.Tables[0].Rows[0];
                 Usuario usa = new Usuario(Convert.ToInt32(fila["Usuario_Id"]));
                 valorizarentidad(usa, fila);
+                CargarPermisosDelUsuario(usa);
                 return usa;
             }
             return null;
         }
         public static int BloquearUsuariosPorFalla()
         {
-            string comando = "UPDATE Usuario SET Usuario_BloqueoDV = 1 WHERE Usuario_Permiso <> 1";
+            string comando = @"UPDATE Usuario 
+                       SET Usuario_BloqueoDV = 1  
+                       WHERE Usuario_Id <> 1 
+                         AND Usuario_Permiso <> 1
+                         AND Usuario_Id NOT IN (
+                             SELECT Usuario_Id 
+                             FROM Usuario_Componente 
+                             WHERE Componente_Id = 1 
+                         )";
+
             DAO dao = new DAO();
             return dao.EjecutarNonQuery(comando, new List<SqlParameter>());
+        }
+
+        private static void CargarPermisosDelUsuario(Usuario usuario)
+        {
+            // Buscamos los componentes asignados directamente al usuario
+            string comando = @"SELECT uc.Componente_Id, c.Nombre, c.NombreInterno, c.EsFamilia 
+                       FROM Usuario_Componente uc
+                       INNER JOIN Componente c ON uc.Componente_Id = c.Componente_Id
+                       WHERE uc.Usuario_Id = @usuarioId";
+
+            List<SqlParameter> parametros = new List<SqlParameter> { new SqlParameter("@usuarioId", usuario.Id) };
+            DAO dao = new DAO();
+            DataSet ds = dao.ObtenerDataSet(comando, parametros);
+
+            usuario.Permisos.Clear();
+
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow fila in ds.Tables[0].Rows)
+                {
+                    bool esFamilia = Convert.ToBoolean(fila["EsFamilia"]);
+                    int idcomp = Convert.ToInt32(fila["Componente_Id"]);
+
+                    if (esFamilia) // si es rol, tambien traemos sus hijos
+                    {
+                        Rol rolCompleto = PermisoDAL.ObtenerRolCompleto(idcomp);
+                        usuario.Permisos.Add(rolCompleto);
+                    }
+                    else
+                    {
+                        PermisoSimple per = new PermisoSimple
+                        {
+                            Id = idcomp,
+                            Nombre = fila["Nombre"].ToString(),
+                            NombreInterno = fila["NombreInterno"].ToString()
+                        };
+                        usuario.Permisos.Add(per);
+                    }
+                }
+            }
+        }
+        public static void GuardarPermisosUsuario(Usuario usuario)
+        { //Método para guardar las relaciones del usuario en la DAL
+            DAO dao = new DAO();
+
+            string cmdDelete = "DELETE FROM Usuario_Componente WHERE Usuario_Id = @usuarioId"; // evitar duplicados
+            dao.EjecutarNonQuery(cmdDelete, new List<SqlParameter> { new SqlParameter("@usuarioId", usuario.Id) });
+
+            foreach (var componente in usuario.Permisos)
+            {
+                string cmdInsert = "INSERT INTO Usuario_Componente (Usuario_Id, Componente_Id) VALUES (@usuarioId, @componenteId)";
+                List<SqlParameter> pars = new List<SqlParameter>
+                {
+                    new SqlParameter("@usuarioId", usuario.Id),
+                    new SqlParameter("@componenteId", componente.Id)
+                };
+                dao.EjecutarNonQuery(cmdInsert, pars);
+            }
         }
     }
 }

@@ -52,8 +52,8 @@ namespace Capa_de_Aplicación_BLL_
             if (usuario == null || !usuario.Activo) // si no se encuentra usuario o esta inactivo
                 return "El usuario no tiene una cuenta activa";
 
-            if (usuario.BloqueoDV && usuario.NivelPermisos != 1) // si no se encuentra usuario o esta inactivo
-                return "El usuario esta bloqueado";
+            if (usuario.BloqueoDV && !usuario.TienePermiso("Bitacorizador")) // si no se encuentra usuario o esta inactivo
+                return "El usuario esta bloqueado debido a una falla de integridad en el sistema";
 
             if (crypton.Compare(password, usuario.Contraseña))
             {

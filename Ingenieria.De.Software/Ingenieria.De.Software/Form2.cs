@@ -66,7 +66,6 @@ namespace Ingenieria.De.Software
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-        #endregion formularios
 
         private void BTNbitacora_Click(object sender, EventArgs e)
         {
@@ -77,5 +76,16 @@ namespace Ingenieria.De.Software
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
+
+        private void BTNgestRolesPerm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormPermisosRoles Fperrol = new FormPermisosRoles();
+                Fperrol.Show();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+        #endregion formularios
     }
 }
