@@ -32,9 +32,9 @@
             this.LBLnombre = new System.Windows.Forms.Label();
             this.BTNcerrar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BTNgestRolesPerm = new System.Windows.Forms.Button();
             this.BTNbitacora = new System.Windows.Forms.Button();
             this.BTNgestUsuarios = new System.Windows.Forms.Button();
-            this.BTNgestRolesPerm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +89,22 @@
             this.panel1.Size = new System.Drawing.Size(163, 404);
             this.panel1.TabIndex = 0;
             // 
+            // BTNgestRolesPerm
+            // 
+            this.BTNgestRolesPerm.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTNgestRolesPerm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNgestRolesPerm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNgestRolesPerm.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNgestRolesPerm.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTNgestRolesPerm.Location = new System.Drawing.Point(19, 231);
+            this.BTNgestRolesPerm.Name = "BTNgestRolesPerm";
+            this.BTNgestRolesPerm.Size = new System.Drawing.Size(113, 46);
+            this.BTNgestRolesPerm.TabIndex = 4;
+            this.BTNgestRolesPerm.Tag = "Permiso_Asignar_Roles";
+            this.BTNgestRolesPerm.Text = "Gestionar Roles y Permisos";
+            this.BTNgestRolesPerm.UseVisualStyleBackColor = false;
+            this.BTNgestRolesPerm.Click += new System.EventHandler(this.BTNgestRolesPerm_Click);
+            // 
             // BTNbitacora
             // 
             this.BTNbitacora.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -100,6 +116,7 @@
             this.BTNbitacora.Name = "BTNbitacora";
             this.BTNbitacora.Size = new System.Drawing.Size(113, 46);
             this.BTNbitacora.TabIndex = 3;
+            this.BTNbitacora.Tag = "Permiso_Ver_Bitacora";
             this.BTNbitacora.Text = "Bitácora";
             this.BTNbitacora.UseVisualStyleBackColor = false;
             this.BTNbitacora.Click += new System.EventHandler(this.BTNbitacora_Click);
@@ -115,24 +132,10 @@
             this.BTNgestUsuarios.Name = "BTNgestUsuarios";
             this.BTNgestUsuarios.Size = new System.Drawing.Size(113, 46);
             this.BTNgestUsuarios.TabIndex = 0;
+            this.BTNgestUsuarios.Tag = "Permiso_Ver_Usuarios";
             this.BTNgestUsuarios.Text = "Gestionar Usuarios";
             this.BTNgestUsuarios.UseVisualStyleBackColor = false;
             this.BTNgestUsuarios.Click += new System.EventHandler(this.BTNgestUsuarios_Click);
-            // 
-            // BTNgestRolesPerm
-            // 
-            this.BTNgestRolesPerm.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BTNgestRolesPerm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTNgestRolesPerm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTNgestRolesPerm.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNgestRolesPerm.ForeColor = System.Drawing.SystemColors.Control;
-            this.BTNgestRolesPerm.Location = new System.Drawing.Point(19, 231);
-            this.BTNgestRolesPerm.Name = "BTNgestRolesPerm";
-            this.BTNgestRolesPerm.Size = new System.Drawing.Size(113, 46);
-            this.BTNgestRolesPerm.TabIndex = 4;
-            this.BTNgestRolesPerm.Text = "Gestionar Roles y Permisos";
-            this.BTNgestRolesPerm.UseVisualStyleBackColor = false;
-            this.BTNgestRolesPerm.Click += new System.EventHandler(this.BTNgestRolesPerm_Click);
             // 
             // Form2
             // 

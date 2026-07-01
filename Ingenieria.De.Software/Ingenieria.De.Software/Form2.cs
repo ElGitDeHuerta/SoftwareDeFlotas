@@ -1,4 +1,5 @@
-﻿using Capa_de_Servicios_SL_;
+﻿using Capa_de_Dominio_BE_;
+using Capa_de_Servicios_SL_;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,17 @@ namespace Ingenieria.De.Software
             var usuarioActivo = SessionManager.TraerInstancia().usuarioINS;
             this.Text = $"Sistema de flotillas - Bienvenido: {usuarioActivo.NombreUsuario}";
             LBLnombre.Text = usuarioActivo.NombreUsuario;
+            AplicarPermisos(usuarioActivo);  
+
+        }
+
+        private void AplicarPermisos(Usuario usuario)
+        {
+            foreach (Control c in panel1.Controls)
+            {
+                if (c.Tag != null)
+                    c.Enabled = usuario.TienePermiso(c.Tag.ToString());
+            }
         }
         //botones
         #region botones
