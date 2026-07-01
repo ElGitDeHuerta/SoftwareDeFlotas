@@ -40,6 +40,7 @@
             this.BTNvolver = new System.Windows.Forms.Button();
             this.BTNdesbloqueoDV = new System.Windows.Forms.Button();
             this.CHKbloqueado = new System.Windows.Forms.CheckBox();
+            this.BTNhistorial = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVusuaios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             this.DGVusuaios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVusuaios.Location = new System.Drawing.Point(266, 12);
             this.DGVusuaios.Name = "DGVusuaios";
-            this.DGVusuaios.Size = new System.Drawing.Size(646, 333);
+            this.DGVusuaios.Size = new System.Drawing.Size(646, 409);
             this.DGVusuaios.TabIndex = 0;
             this.DGVusuaios.SelectionChanged += new System.EventHandler(this.DGVusuaios_SelectionChanged);
             // 
@@ -205,11 +206,27 @@
             this.CHKbloqueado.Text = "Bloqueado :";
             this.CHKbloqueado.UseVisualStyleBackColor = true;
             // 
+            // BTNhistorial
+            // 
+            this.BTNhistorial.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BTNhistorial.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNhistorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNhistorial.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNhistorial.ForeColor = System.Drawing.Color.LawnGreen;
+            this.BTNhistorial.Location = new System.Drawing.Point(12, 351);
+            this.BTNhistorial.Name = "BTNhistorial";
+            this.BTNhistorial.Size = new System.Drawing.Size(121, 56);
+            this.BTNhistorial.TabIndex = 15;
+            this.BTNhistorial.Text = "Ver Historial";
+            this.BTNhistorial.UseVisualStyleBackColor = false;
+            this.BTNhistorial.Click += new System.EventHandler(this.BTNhistorial_Click);
+            // 
             // FormGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 357);
+            this.ClientSize = new System.Drawing.Size(926, 433);
+            this.Controls.Add(this.BTNhistorial);
             this.Controls.Add(this.CHKbloqueado);
             this.Controls.Add(this.BTNdesbloqueoDV);
             this.Controls.Add(this.BTNvolver);
@@ -246,5 +263,6 @@
         private System.Windows.Forms.Button BTNvolver;
         private System.Windows.Forms.Button BTNdesbloqueoDV;
         private System.Windows.Forms.CheckBox CHKbloqueado;
+        private System.Windows.Forms.Button BTNhistorial;
     }
 }

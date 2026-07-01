@@ -139,6 +139,9 @@ namespace Ingenieria.De.Software
         {
             this.Close();
         }
+
+
+
         #endregion botones
 
         private void BTNdesbloqueoDV_Click(object sender, EventArgs e)
@@ -186,6 +189,21 @@ namespace Ingenieria.De.Software
                     );
                 }
             }
+        }
+
+        private void BTNhistorial_Click(object sender, EventArgs e)
+        {
+            if (DGVusuaios.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar un usuario para ver su historial.");
+                return;
+            }
+
+            int id = int.Parse(DGVusuaios.SelectedRows[0].Cells["Id"].Value.ToString());
+            string nombre = DGVusuaios.SelectedRows[0].Cells["Nombre"].Value.ToString();
+
+            FormHistorialUsuario fHistorial = new FormHistorialUsuario(id, nombre);
+            fHistorial.ShowDialog(this);
         }
     }
 }

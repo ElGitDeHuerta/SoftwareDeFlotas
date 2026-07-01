@@ -45,6 +45,7 @@
     <Compile Include="FiltrosBitacora.cs" />
     <Compile Include="IVerificable.cs" />
     <Compile Include="RegistroBitacora.cs" />
+    <Compile Include="RegistroCambio.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

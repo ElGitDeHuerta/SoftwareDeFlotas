@@ -19,7 +19,7 @@ namespace Ingenieria.De.Software
         {
             InitializeComponent();
         }
-        private void Form2_Load(object sender, EventArgs e)
+        private void Form2_Load(object  sender, EventArgs e)
         {
             var usuarioActivo = SessionManager.TraerInstancia().usuarioINS;
             this.Text = $"Sistema de flotillas - Bienvenido: {usuarioActivo.NombreUsuario}";

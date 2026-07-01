@@ -14,26 +14,43 @@ namespace Capa_de_Aplicación_BLL_
         private CryptoManager crypton = new CryptoManager();
         private ValidadorDeIntegridad validador = new ValidadorDeIntegridad();
         private DigitoVerificadorBLL DVbll = new DigitoVerificadorBLL();
+        private GestorDeAuditoria auditor = new GestorDeAuditoria();
         public int Guardar(Usuario usa)
         {
             usa.NombreUsuario = usa.NombreUsuario.Trim();
             usa.Contraseña = usa.Contraseña.Trim();
+
             if (usa.Id == 0)
             {
                 ValidarCredenciales(usa.NombreUsuario, usa.Contraseña);
                 usa.Contraseña = crypton.Hash(usa.Contraseña);
+                UsuarioDAL.Guardar(usa);                  // INSERT — el DAL asigna usa.Id real
+                usa.DVH = validador.CalcularDVH(usa);     // DVH con el Id correcto
+                UsuarioDAL.Guardar(usa);                  // UPDATE — persiste el DVH
+                DVbll.RecalcularUsuariosDVV();
+                auditor.RegistrarAlta(usa);
+                return 1;
             }
-            usa.DVH = validador.CalcularDVH(usa); //calcular el nuevo dvh
+
+            Usuario antes = UsuarioDAL.ObtenerPorId(usa.Id);
+            usa.DVH = validador.CalcularDVH(usa);
             int resultado = UsuarioDAL.Guardar(usa);
-            DVbll.RecalcularUsuariosDVV(); 
+            DVbll.RecalcularUsuariosDVV();
+
+            if (resultado > 0)
+                auditor.RegistrarCambios(antes, usa);
+
             return resultado;
         }
+
         public int Eliminar(Usuario usa)
         {
+            auditor.RegistrarBaja(usa);
             int resultado = UsuarioDAL.Eliminar(usa);
-            DVbll.RecalcularUsuariosDVV(); // niguna dvh se da cuenta pero si la dvv
+            DVbll.RecalcularUsuariosDVV();
             return resultado;
         }
+
         public static Usuario ObtenerPorId(int pid)
         {
             return UsuarioDAL.ObtenerPorId(pid);
