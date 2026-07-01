@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Ingenieria.De.Software
 {
-    public partial class FormGestionUsuarios : Form
+    public partial class FormGestionUsuarios : Form, IObservadorDeIdioma
     {
         public Form PadredelPadreLogin { get; set; }
         public FormGestionUsuarios()
@@ -23,7 +23,26 @@ namespace Ingenieria.De.Software
 
         private void FormGestionUsuarios_Load(object sender, EventArgs e)
         {
+            GestorDeIdioma.TraerInstancia().Suscribir(this);
+            ActualizarIdioma(GestorDeIdioma.TraerInstancia().ObtenerTextos());
             CargarGrilla();
+        }
+
+        public void ActualizarIdioma(Dictionary<string, string> textos)
+        {
+            this.Text          = textos["gestusu_titulo"];
+            BTNcrearUsu.Text   = textos["gestusu_alta"];
+            BTNmodUsu.Text     = textos["gestusu_modificar"];
+            BTNeliminarUsu.Text = textos["gestusu_eliminar"];
+            BTNvolver.Text     = textos["gestusu_volver"];
+            BTNhistorial.Text  = textos["gestusu_historial"];
+
+            if (DGVusuaios.Columns["Nombre"] != null)
+                DGVusuaios.Columns["Nombre"].HeaderText = textos["gestusu_col_nombre"];
+            if (DGVusuaios.Columns["Contraseña"] != null)
+                DGVusuaios.Columns["Contraseña"].HeaderText = textos["gestusu_col_contra"];
+            if (DGVusuaios.Columns["Activo"] != null)
+                DGVusuaios.Columns["Activo"].HeaderText = textos["gestusu_col_activo"];
         }
 
 
@@ -90,6 +109,7 @@ namespace Ingenieria.De.Software
         #region formularios
         private void FormGestionUsuarios_FormClosed(object sender, FormClosedEventArgs e)
         {
+            GestorDeIdioma.TraerInstancia().Desuscribir(this);
 
             if (this.PadredelPadreLogin != null)
             {

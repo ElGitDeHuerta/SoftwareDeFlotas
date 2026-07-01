@@ -15,17 +15,35 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Ingenieria.De.Software
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IObservadorDeIdioma
     {
         private int intentos = 3;
         private bool bloqueo = false;
+        private string _phUsuario = "USUARIO";
+        private string _phContra = "CONTRASEÑA";
+
         public Form1()
         {
             InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            GestorDeIdioma.TraerInstancia().Suscribir(this);
+            ActualizarIdioma(GestorDeIdioma.TraerInstancia().ObtenerTextos());
             LBLLoguin.Focus();
+        }
+
+        public void ActualizarIdioma(Dictionary<string, string> textos)
+        {
+            LBLLoguin.Text    = textos["login_titulo"];
+            BTNingresar.Text  = textos["login_ingresar"];
+            BTNcancel.Text    = textos["login_cancelar"];
+            CHKcontra.Text    = textos["login_mostrar_contra"];
+
+            if (TXTusua.Text  == _phUsuario) TXTusua.Text  = textos["login_usuario_placeholder"];
+            if (TXTcontra.Text == _phContra)  TXTcontra.Text = textos["login_contra_placeholder"];
+            _phUsuario = textos["login_usuario_placeholder"];
+            _phContra  = textos["login_contra_placeholder"];
         }
 
         //controles
@@ -76,7 +94,7 @@ namespace Ingenieria.De.Software
         }
         private void CHKcontra_CheckedChanged(object sender, EventArgs e)
         {
-            if (CHKcontra.Checked == false && TXTcontra.Text != "CONTRASEÑA")
+            if (CHKcontra.Checked == false && TXTcontra.Text != _phContra)
                 TXTcontra.UseSystemPasswordChar = true;
             else
                 TXTcontra.UseSystemPasswordChar = false;
@@ -196,7 +214,7 @@ namespace Ingenieria.De.Software
         #region diseño de botones
         private void TXTusua_Enter(object sender, EventArgs e)
         {
-            if (TXTusua.Text == "USUARIO")
+            if (TXTusua.Text == _phUsuario)
             {
                 TXTusua.Text = "";
                 TXTusua.Font = new Font("Microsoft JhengHei", 12);
@@ -208,21 +226,20 @@ namespace Ingenieria.De.Software
         {
             if (TXTusua.Text == "")
             {
-                TXTusua.Text = "USUARIO";
+                TXTusua.Text = _phUsuario;
                 TXTusua.Font = new Font("Microsoft JhengHei", 22);
                 TXTusua.Location = new Point(TXTusua.Location.X, TXTusua.Location.Y - 20);
             }
         }
         private void TXTcontra_Enter(object sender, EventArgs e)
         {
-            if (TXTcontra.Text == "CONTRASEÑA")
+            if (TXTcontra.Text == _phContra)
             {
                 TXTcontra.Text = "";
                 if (!CHKcontra.Checked)
                 {
                     TXTcontra.UseSystemPasswordChar = true;
                     TXTcontra.Font = new Font("Microsoft JhengHei", 12);
-
                 }
                 else { TXTcontra.Font = new Font("Microsoft JhengHei", 10); }
                 TXTcontra.Location = new Point(TXTcontra.Location.X, TXTcontra.Location.Y + 20);
@@ -233,7 +250,7 @@ namespace Ingenieria.De.Software
         {
             if (TXTcontra.Text == "")
             {
-                TXTcontra.Text = "CONTRASEÑA";
+                TXTcontra.Text = _phContra;
                 TXTcontra.UseSystemPasswordChar = false;
                 TXTcontra.Font = new Font("Microsoft JhengHei", 22);
                 TXTcontra.Location = new Point(TXTcontra.Location.X, TXTcontra.Location.Y - 20);
