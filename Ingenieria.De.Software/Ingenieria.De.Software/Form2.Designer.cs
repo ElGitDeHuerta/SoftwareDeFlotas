@@ -35,6 +35,7 @@
             this.BTNgestRolesPerm = new System.Windows.Forms.Button();
             this.BTNbitacora = new System.Windows.Forms.Button();
             this.BTNgestUsuarios = new System.Windows.Forms.Button();
+            this.BTNidioma = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +79,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.BTNidioma);
             this.panel1.Controls.Add(this.BTNgestRolesPerm);
             this.panel1.Controls.Add(this.BTNbitacora);
             this.panel1.Controls.Add(this.BTNgestUsuarios);
@@ -137,6 +139,22 @@
             this.BTNgestUsuarios.UseVisualStyleBackColor = false;
             this.BTNgestUsuarios.Click += new System.EventHandler(this.BTNgestUsuarios_Click);
             // 
+            // BTNidioma
+            // 
+            this.BTNidioma.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTNidioma.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNidioma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNidioma.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNidioma.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTNidioma.Location = new System.Drawing.Point(19, 179);
+            this.BTNidioma.Name = "BTNidioma";
+            this.BTNidioma.Size = new System.Drawing.Size(113, 46);
+            this.BTNidioma.TabIndex = 5;
+            this.BTNidioma.Tag = "Permiso_Asignar_Roles";
+            this.BTNidioma.Text = "Idioma";
+            this.BTNidioma.UseVisualStyleBackColor = false;
+            this.BTNidioma.Click += new System.EventHandler(this.BTNidioma_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,5 +182,6 @@
         private System.Windows.Forms.Button BTNgestUsuarios;
         private System.Windows.Forms.Button BTNbitacora;
         private System.Windows.Forms.Button BTNgestRolesPerm;
+        private System.Windows.Forms.Button BTNidioma;
     }
 }

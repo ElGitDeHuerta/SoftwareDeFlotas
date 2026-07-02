@@ -45,6 +45,8 @@
     <Compile Include="BitacoraObserver.cs" />
     <Compile Include="DigitoVerificadorBLL.cs" />
     <Compile Include="GestorDeAuditoria.cs" />
+    <Compile Include="GestorDeIdioma.cs" />
+    <Compile Include="IObservadorDeIdioma.cs" />
     <Compile Include="PermisoBLL.cs" />
     <Compile Include="UsuarioBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
