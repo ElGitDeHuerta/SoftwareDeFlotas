@@ -32,10 +32,10 @@
             this.LBLnombre = new System.Windows.Forms.Label();
             this.BTNcerrar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BTNidioma = new System.Windows.Forms.Button();
             this.BTNgestRolesPerm = new System.Windows.Forms.Button();
             this.BTNbitacora = new System.Windows.Forms.Button();
             this.BTNgestUsuarios = new System.Windows.Forms.Button();
-            this.BTNidioma = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +91,22 @@
             this.panel1.Size = new System.Drawing.Size(163, 404);
             this.panel1.TabIndex = 0;
             // 
+            // BTNidioma
+            // 
+            this.BTNidioma.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTNidioma.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNidioma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNidioma.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNidioma.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTNidioma.Location = new System.Drawing.Point(19, 285);
+            this.BTNidioma.Name = "BTNidioma";
+            this.BTNidioma.Size = new System.Drawing.Size(113, 46);
+            this.BTNidioma.TabIndex = 5;
+            this.BTNidioma.Tag = "Permiso_Asignar_Roles";
+            this.BTNidioma.Text = "Idioma";
+            this.BTNidioma.UseVisualStyleBackColor = false;
+            this.BTNidioma.Click += new System.EventHandler(this.BTNidioma_Click);
+            // 
             // BTNgestRolesPerm
             // 
             this.BTNgestRolesPerm.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -98,7 +114,7 @@
             this.BTNgestRolesPerm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTNgestRolesPerm.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNgestRolesPerm.ForeColor = System.Drawing.SystemColors.Control;
-            this.BTNgestRolesPerm.Location = new System.Drawing.Point(19, 231);
+            this.BTNgestRolesPerm.Location = new System.Drawing.Point(19, 181);
             this.BTNgestRolesPerm.Name = "BTNgestRolesPerm";
             this.BTNgestRolesPerm.Size = new System.Drawing.Size(113, 46);
             this.BTNgestRolesPerm.TabIndex = 4;
@@ -114,7 +130,7 @@
             this.BTNbitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTNbitacora.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNbitacora.ForeColor = System.Drawing.SystemColors.Control;
-            this.BTNbitacora.Location = new System.Drawing.Point(19, 96);
+            this.BTNbitacora.Location = new System.Drawing.Point(19, 233);
             this.BTNbitacora.Name = "BTNbitacora";
             this.BTNbitacora.Size = new System.Drawing.Size(113, 46);
             this.BTNbitacora.TabIndex = 3;
@@ -130,7 +146,7 @@
             this.BTNgestUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTNgestUsuarios.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNgestUsuarios.ForeColor = System.Drawing.SystemColors.Control;
-            this.BTNgestUsuarios.Location = new System.Drawing.Point(19, 283);
+            this.BTNgestUsuarios.Location = new System.Drawing.Point(19, 129);
             this.BTNgestUsuarios.Name = "BTNgestUsuarios";
             this.BTNgestUsuarios.Size = new System.Drawing.Size(113, 46);
             this.BTNgestUsuarios.TabIndex = 0;
@@ -139,27 +155,11 @@
             this.BTNgestUsuarios.UseVisualStyleBackColor = false;
             this.BTNgestUsuarios.Click += new System.EventHandler(this.BTNgestUsuarios_Click);
             // 
-            // BTNidioma
-            // 
-            this.BTNidioma.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BTNidioma.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTNidioma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTNidioma.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNidioma.ForeColor = System.Drawing.SystemColors.Control;
-            this.BTNidioma.Location = new System.Drawing.Point(19, 179);
-            this.BTNidioma.Name = "BTNidioma";
-            this.BTNidioma.Size = new System.Drawing.Size(113, 46);
-            this.BTNidioma.TabIndex = 5;
-            this.BTNidioma.Tag = "Permiso_Asignar_Roles";
-            this.BTNidioma.Text = "Idioma";
-            this.BTNidioma.UseVisualStyleBackColor = false;
-            this.BTNidioma.Click += new System.EventHandler(this.BTNidioma_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(938, 404);
+            this.ClientSize = new System.Drawing.Size(880, 404);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LBLnombre);
             this.Name = "Form2";

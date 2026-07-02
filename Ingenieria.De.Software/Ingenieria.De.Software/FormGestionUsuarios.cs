@@ -137,6 +137,12 @@ namespace Ingenieria.De.Software
                 MessageBox.Show("Debe seleccionar un Usuario para realizar esta operacion de " + oper.ToString());
             }
         }
+        private void BTNasignarRol_Click(object sender, EventArgs e)
+        {
+            FormAsignacionPermisos mFormPer = new FormAsignacionPermisos();
+            mFormPer.StartPosition = FormStartPosition.CenterParent;
+            mFormPer.ShowDialog(this);
+        }
         #endregion formularios
 
         // botones
@@ -225,5 +231,6 @@ namespace Ingenieria.De.Software
             FormHistorialUsuario fHistorial = new FormHistorialUsuario(id, nombre);
             fHistorial.ShowDialog(this);
         }
+
     }
 }

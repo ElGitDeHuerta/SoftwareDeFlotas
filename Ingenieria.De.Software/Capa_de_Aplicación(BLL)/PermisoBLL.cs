@@ -68,7 +68,7 @@ namespace Capa_de_Aplicación_BLL_
             bool esFamilia = (componente is Rol);
 
             // persistir componente
-            int resultado = PermisoDAL.GuardarComponente(componente, esFamilia);
+            int resultado = PermisoDAL.GuardarComponente(componente);
             if (resultado == 0)
                 throw new Exception("Ocurrió un error al intentar guardar el componente en la base de datos");
         }
@@ -83,6 +83,29 @@ namespace Capa_de_Aplicación_BLL_
         {
             //traer un rol 
             return PermisoDAL.ObtenerRolCompleto(rolId);
+        }
+        public void ModificarRol(Rol rol)
+        {
+            if (rol == null)
+                throw new Exception("Debe seleccionar un rol");
+
+            if (string.IsNullOrWhiteSpace(rol.Nombre))
+                throw new Exception("Debe ingresar un nombre");
+
+            int resultado = PermisoDAL.GuardarComponente(rol);
+
+            if (resultado == 0)
+                throw new Exception("No se pudo modificar el rol");
+        }
+        public void EliminarRol(Rol rol)
+        {
+            if (rol == null)
+                throw new Exception("Debe seleccionar un rol");
+
+            int resultado = PermisoDAL.EliminarRol(rol.Id);
+
+            if (resultado == 0)
+                throw new Exception("No se pudo eliminar el rol");
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
             return _mid;
         }
 
-        public static int GuardarComponente(ComponentePermiso componente, bool esFamilia)
+        public static int GuardarComponente(ComponentePermiso componente)
         {
             //Guardar un Componente Base (Alta o Modificación)
             DAO dao = new DAO();
@@ -31,7 +31,7 @@ namespace Capa_de_Acceso_a_Datos_DAL_
             {
                 new SqlParameter("@nombre", componente.Nombre),
                 new SqlParameter("@nombreInterno", componente.NombreInterno ?? (object)DBNull.Value), // para permitir nulos
-                new SqlParameter("@esFamilia", esFamilia) // para saber si es permiso simple o rol 
+                new SqlParameter("@esFamilia", componente is Rol) // para saber si es permiso simple o rol 
             };
 
             string comando;
@@ -50,6 +50,27 @@ namespace Capa_de_Acceso_a_Datos_DAL_
                 return dao.EjecutarNonQuery(comando, parametros);
             }
         }
+        public static int EliminarRol(int id)
+        {
+            DAO dao = new DAO();
+
+            // Primero se borran las relaciones
+            string sql1 = @"DELETE FROM Componente_Hijo WHERE Padre_Id = @id OR Hijo_Id = @id";
+
+            List<SqlParameter> p = new List<SqlParameter>()
+            {
+                new SqlParameter("@id", id)
+            };
+
+            dao.EjecutarNonQuery(sql1, p);
+
+            // Ahora se borra el componente
+            string sql2 = @"DELETE FROM Componente WHERE Componente_Id = @id";
+
+            return dao.EjecutarNonQuery(sql2, p);
+        }
+
+
 
         public static int AgregarHijo(int padreId, int hijoId)
         {

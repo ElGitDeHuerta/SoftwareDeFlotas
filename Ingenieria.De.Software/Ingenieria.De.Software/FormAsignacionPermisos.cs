@@ -50,9 +50,9 @@ namespace Ingenieria.De.Software
 
                 List<ComponentePermiso> soloRoles = todoElCatalogo.Where(x => x is Rol).ToList();
 
-                LBXpermisosDisponibles.DataSource = null;
-                LBXpermisosDisponibles.DataSource = soloRoles;
-                LBXpermisosDisponibles.DisplayMember = "Nombre";
+                LBXrolesDisponibles.DataSource = null;
+                LBXrolesDisponibles.DataSource = soloRoles;
+                LBXrolesDisponibles.DisplayMember = "Nombre";
             }
             catch (Exception ex)
             {
@@ -122,7 +122,7 @@ namespace Ingenieria.De.Software
                 return;
             }
 
-            if (LBXpermisosDisponibles.SelectedItem is ComponentePermiso componenteAAgregar)
+            if (LBXrolesDisponibles.SelectedItem is ComponentePermiso componenteAAgregar)
             {
                 // [NUEVA VALIDACIÓN] Bloqueo explícito si intentan meter algo que no sea un Rol
                 if (!(componenteAAgregar is Rol))
@@ -190,5 +190,9 @@ namespace Ingenieria.De.Software
 
         #endregion botones
 
+        private void BRNvolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

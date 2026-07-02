@@ -41,6 +41,7 @@
             this.BTNdesbloqueoDV = new System.Windows.Forms.Button();
             this.CHKbloqueado = new System.Windows.Forms.CheckBox();
             this.BTNhistorial = new System.Windows.Forms.Button();
+            this.BTNasignarRol = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVusuaios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +93,7 @@
             this.BTNeliminarUsu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTNeliminarUsu.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNeliminarUsu.ForeColor = System.Drawing.Color.IndianRed;
-            this.BTNeliminarUsu.Location = new System.Drawing.Point(12, 289);
+            this.BTNeliminarUsu.Location = new System.Drawing.Point(12, 351);
             this.BTNeliminarUsu.Name = "BTNeliminarUsu";
             this.BTNeliminarUsu.Size = new System.Drawing.Size(121, 56);
             this.BTNeliminarUsu.TabIndex = 4;
@@ -167,7 +168,7 @@
             this.BTNvolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTNvolver.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNvolver.ForeColor = System.Drawing.Color.Green;
-            this.BTNvolver.Location = new System.Drawing.Point(139, 289);
+            this.BTNvolver.Location = new System.Drawing.Point(139, 351);
             this.BTNvolver.Name = "BTNvolver";
             this.BTNvolver.Size = new System.Drawing.Size(121, 56);
             this.BTNvolver.TabIndex = 12;
@@ -182,7 +183,7 @@
             this.BTNdesbloqueoDV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTNdesbloqueoDV.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNdesbloqueoDV.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.BTNdesbloqueoDV.Location = new System.Drawing.Point(139, 165);
+            this.BTNdesbloqueoDV.Location = new System.Drawing.Point(139, 163);
             this.BTNdesbloqueoDV.Name = "BTNdesbloqueoDV";
             this.BTNdesbloqueoDV.Size = new System.Drawing.Size(121, 56);
             this.BTNdesbloqueoDV.TabIndex = 13;
@@ -212,8 +213,8 @@
             this.BTNhistorial.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BTNhistorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTNhistorial.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNhistorial.ForeColor = System.Drawing.Color.LawnGreen;
-            this.BTNhistorial.Location = new System.Drawing.Point(12, 351);
+            this.BTNhistorial.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTNhistorial.Location = new System.Drawing.Point(139, 289);
             this.BTNhistorial.Name = "BTNhistorial";
             this.BTNhistorial.Size = new System.Drawing.Size(121, 56);
             this.BTNhistorial.TabIndex = 15;
@@ -221,11 +222,27 @@
             this.BTNhistorial.UseVisualStyleBackColor = false;
             this.BTNhistorial.Click += new System.EventHandler(this.BTNhistorial_Click);
             // 
+            // BTNasignarRol
+            // 
+            this.BTNasignarRol.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BTNasignarRol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNasignarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNasignarRol.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNasignarRol.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTNasignarRol.Location = new System.Drawing.Point(12, 289);
+            this.BTNasignarRol.Name = "BTNasignarRol";
+            this.BTNasignarRol.Size = new System.Drawing.Size(121, 56);
+            this.BTNasignarRol.TabIndex = 16;
+            this.BTNasignarRol.Text = "Asignar Roles";
+            this.BTNasignarRol.UseVisualStyleBackColor = false;
+            this.BTNasignarRol.Click += new System.EventHandler(this.BTNasignarRol_Click);
+            // 
             // FormGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 433);
+            this.Controls.Add(this.BTNasignarRol);
             this.Controls.Add(this.BTNhistorial);
             this.Controls.Add(this.CHKbloqueado);
             this.Controls.Add(this.BTNdesbloqueoDV);
@@ -264,5 +281,6 @@
         private System.Windows.Forms.Button BTNdesbloqueoDV;
         private System.Windows.Forms.CheckBox CHKbloqueado;
         private System.Windows.Forms.Button BTNhistorial;
+        private System.Windows.Forms.Button BTNasignarRol;
     }
 }

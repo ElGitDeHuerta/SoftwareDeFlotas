@@ -15,7 +15,8 @@ namespace Ingenieria.De.Software
     public partial class FormPermisosRoles : Form
     {
         private PermisoBLL permisoBll = new PermisoBLL();
-        private Rol rolseleccionado;
+        private Rol rolseleccionado; // para abm integrado
+        private ComponentePermiso componenteSeleccionado; // para añadir a un rol
         public FormPermisosRoles()
         {
             InitializeComponent();
@@ -24,7 +25,9 @@ namespace Ingenieria.De.Software
         private void FormPermisosRoles_Load(object sender, EventArgs e)
         {
             ActualizarControlesMaestros();
+            LBXcomponentes.Format += LBXcomponentes_Format;
         }
+        #region refrecar
         private void ActualizarControlesMaestros()
         { //sincronizar form con la bd
             try
@@ -42,84 +45,11 @@ namespace Ingenieria.De.Software
                 CMBroles.DataSource = null;
                 CMBroles.DataSource = onlyRoles;
                 CMBroles.DisplayMember = "Nombre";
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar componentes: {ex.Message}");
-            }
-        }
-
-        private void BTNcrearPermiso_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                PermisoSimple nuevaPatente = new PermisoSimple
-                {
-                    Nombre = TXTnomPatente.Text.Trim(),
-                    NombreInterno = TXTinternopatente.Text.Trim()
-                };
-
-                permisoBll.GuardarComponente(nuevaPatente);
-                MessageBox.Show("Patente creada con éxito en el catálogo");
-
-                TXTnomPatente.Clear();
-                TXTinternopatente.Clear();
-                ActualizarControlesMaestros();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void BTNcrearRol_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Rol nuevoRol = new Rol
-                {
-                    Nombre = TXTnomRol.Text.Trim(),
-                    NombreInterno = null
-                };
-
-                permisoBll.GuardarComponente(nuevoRol);
-                MessageBox.Show("Rol contenedor creado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                TXTnomRol.Clear();
-
-                // Guardamos el ID de lo que estábamos editando para no perderlo
-                int idIdActual = rolseleccionado != null ? rolseleccionado.Id : 0;
-
-                ActualizarControlesMaestros();
-
-                if (idIdActual > 0)
-                    ReseleccionarRolEnCombo(idIdActual);
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private void ReseleccionarRolEnCombo(int idRol)
-        {
-            foreach (Rol item in CMBroles.Items)
-            {
-                if (item.Id == idRol)
-                {
-                    CMBroles.SelectedItem = item;
-                    break;
-                }
-            }
-        }
-
-        private void CMBroles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CMBroles.SelectedItem is Rol rolParcial)
-            {
-                // Buscamos el rol completo desde la base de datos 
-                rolseleccionado = permisoBll.ObtenerRolCompleto(rolParcial.Id);
-                CargarArbolPermisos(rolseleccionado);
             }
         }
         private void CargarArbolPermisos(Rol rolRaiz)
@@ -160,31 +90,40 @@ namespace Ingenieria.De.Software
             }
         }
 
+        #endregion refrecar
+
+        #region Botones
         private void BTNagregarAlRol_Click(object sender, EventArgs e)
         {
             if (rolseleccionado == null)
             {
-                MessageBox.Show("Primero debe seleccionar un Rol de la lista derecha para configurarlo");
+                MessageBox.Show("Seleccione un rol en el combo");
                 return;
             }
 
-            if (LBXcomponentes.SelectedItem is ComponentePermiso componenteHijo)
+            if (componenteSeleccionado == null)
             {
-                try
-                {
-                    if (componenteHijo is Rol)
-                        componenteHijo = permisoBll.ObtenerRolCompleto(componenteHijo.Id);
-                    
-                    permisoBll.AgregarComponenteARol(rolseleccionado, componenteHijo);
-                    CargarArbolPermisos(rolseleccionado);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Advertencia, Referencia Circular Detectada");
-                }
+                MessageBox.Show("Seleccione un componente");
+                return;
+            }
+
+            try
+            {
+                ComponentePermiso componente = componenteSeleccionado;
+
+                if (componente is Rol)
+                    componente = permisoBll.ObtenerRolCompleto(componente.Id);
+
+                permisoBll.AgregarComponenteARol(rolseleccionado, componente);
+
+                rolseleccionado = permisoBll.ObtenerRolCompleto(rolseleccionado.Id);
+                CargarArbolPermisos(rolseleccionado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
-
         private void BTNquitarDelRol_Click(object sender, EventArgs e)
         {
             if (rolseleccionado == null || ArbolPermisos.SelectedNode == null) return;
@@ -209,7 +148,126 @@ namespace Ingenieria.De.Software
                 }
             }
         }
+        private void BTNcrearRol_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Rol nuevoRol = new Rol
+                {
+                    Nombre = TXTnomRol.Text.Trim(),
+                    NombreInterno = null
+                };
 
+                permisoBll.GuardarComponente(nuevoRol);
+                MessageBox.Show("Rol contenedor creado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                TXTnomRol.Clear();
+
+                // Guardamos el ID de lo que estábamos editando para no perderlo
+                int idIdActual = rolseleccionado != null ? rolseleccionado.Id : 0;
+
+                ActualizarControlesMaestros();
+
+                if (idIdActual > 0)
+                    ReseleccionarRolEnCombo(idIdActual);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void BTNmodRol_Click(object sender, EventArgs e)
+        {
+            if (!(componenteSeleccionado is Rol rol))
+            {
+                MessageBox.Show("Seleccione un rol en la lista.");
+                return;
+            }
+
+            rol.Nombre = TXTnomRol.Text.Trim();
+
+            permisoBll.ModificarRol(rol);
+
+            ActualizarControlesMaestros();
+        }
+        private void BTNelimRol_Click(object sender, EventArgs e)
+        {
+            if (!(componenteSeleccionado is Rol rol))
+            {
+                MessageBox.Show("Seleccione un rol en la lista.");
+                return;
+            }
+
+            DialogResult r = MessageBox.Show($"¿Eliminar rol '{rol.Nombre}'?","Confirmación",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (r != DialogResult.Yes)
+                return;
+
+            permisoBll.EliminarRol(rol);
+
+            TXTnomRol.Clear();
+            componenteSeleccionado = null;
+
+            ActualizarControlesMaestros();
+        }
+        #endregion Botones
+
+        #region otroscontroles
+        private void LBXcomponentes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LBXcomponentes.SelectedItem is ComponentePermiso comp)
+            {
+                componenteSeleccionado = comp;
+                if (comp is Rol rol)
+                {
+                    TXTnomRol.Text = rol.Nombre;
+                    BTNmodRol.Enabled = true;
+                    BTNelimRol.Enabled = true;
+                }
+                else
+                {
+                    TXTnomRol.Text = "";
+                    BTNmodRol.Enabled = false;
+                    BTNelimRol.Enabled = false;
+                }
+            }
+        }
+        private void LBXcomponentes_Format(object sender, ListControlConvertEventArgs e)
+        {
+            if (e.ListItem is Rol rol)
+                e.Value = $"[ROL] {rol.Nombre}";
+            else if (e.ListItem is PermisoSimple permiso)
+                e.Value = $"[PERMISO] {permiso.Nombre}";
+        }
+        private void CMBroles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CMBroles.SelectedItem is Rol rolParcial)
+            {
+                // Buscamos el rol completo desde la base de datos 
+                rolseleccionado = permisoBll.ObtenerRolCompleto(rolParcial.Id);
+                CargarArbolPermisos(rolseleccionado);
+            }
+        }
+        private void ReseleccionarRolEnCombo(int idRol)
+        {
+            foreach (Rol item in CMBroles.Items)
+            {
+                if (item.Id == idRol)
+                {
+                    CMBroles.SelectedItem = item;
+                    break;
+                }
+            }
+        }
+        #endregion otroscontroles
+
+        #region formularios
+        private void BTNvolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void BTNabrirrolusuario_Click(object sender, EventArgs e)
         {
             try
@@ -219,5 +277,6 @@ namespace Ingenieria.De.Software
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
+        #endregion formularios
     }
 }
