@@ -154,7 +154,7 @@ namespace Ingenieria.De.Software
             {
                 Rol nuevoRol = new Rol
                 {
-                    Nombre = TXTnomRol.Text.Trim(),
+                    Nombre = TXTnomRol.Text,
                     NombreInterno = null
                 };
 

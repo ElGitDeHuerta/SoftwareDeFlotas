@@ -56,19 +56,28 @@ namespace Capa_de_Aplicación_BLL_
         }
 
         public void GuardarComponente(ComponentePermiso componente)
-        {
-            //Crear o actualizar un Rol o un permiso 
+        {//Crear o actualizar un Rol o un permiso 
+            componente.Nombre = componente.Nombre.Trim();
+
             if (string.IsNullOrWhiteSpace(componente.Nombre))
                 throw new Exception("El componente tiene que tener un Nombre");
+
+            List<ComponentePermiso> lcomponentes = ListarComponentesRaiz();
+            foreach (ComponentePermiso c in lcomponentes)
+            {
+                if(componente.Nombre.Equals(c.Nombre))
+                    throw new Exception("Ya existe un componente con ese nombre");
+            }
 
             // Validamos si es una hoja para exigir que tenga el identificador interno del sistema
             if (componente is PermisoSimple && string.IsNullOrWhiteSpace(componente.NombreInterno))
                 throw new Exception("Un permiso simple debe tener asignado un Nombre Interno para el control de accesos");
 
-            bool esFamilia = (componente is Rol);
-
+            if (componente is Rol)
+                componente.NombreInterno = null;
             // persistir componente
             int resultado = PermisoDAL.GuardarComponente(componente);
+
             if (resultado == 0)
                 throw new Exception("Ocurrió un error al intentar guardar el componente en la base de datos");
         }
